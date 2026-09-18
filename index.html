@@ -150,7 +150,7 @@
     background:var(--ink);
   }
   .shader-bg{position:absolute; inset:0; width:100%; height:100%; z-index:0;}
-  .hero > .shader-bg{opacity:.65;}
+  .hero > .shader-bg{opacity:.9;}
   .hero::after{
     content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
     background:
@@ -683,8 +683,9 @@
   </section>
 
   <!-- ===================== MITOS VS EVIDENCIA ===================== -->
-  <section id="evidencia">
-    <div class="wrap">
+  <section id="evidencia" style="position:relative; overflow:hidden;">
+    <canvas class="shader-bg" id="evidenciaShader" aria-hidden="true" style="opacity:.6;"></canvas>
+    <div class="wrap" style="position:relative; z-index:1;">
       <div class="section-head">
         <span class="eyebrow"><span class="plate">04 /</span> Mitos y evidencia</span>
         <h2>Lo que se dice y lo que respalda la ciencia</h2>
@@ -773,7 +774,7 @@
 
   <!-- ===================== REPRESENTANTES ===================== -->
   <section id="contacto" style="position:relative; overflow:hidden;">
-    <canvas class="shader-bg" id="repShader" aria-hidden="true" style="opacity:.45;"></canvas>
+    <canvas class="shader-bg" id="repShader" aria-hidden="true" style="opacity:.6;"></canvas>
     <div class="wrap" style="position:relative; z-index:1;">
       <div class="section-head">
         <span class="eyebrow"><span class="plate">06 /</span> Encuentra a tu representante</span>
@@ -1304,15 +1305,15 @@
       colors: BRAND_COLORS,
       colorCount: 4,
       scale: 1.35,
-      intensity: 0.42,
+      intensity: 0.52,
       paramA: 0.5,
       warp: 0.35,
       detail: 1.6,
-      contrast: 0.95,
-      brightness: -0.62,
-      saturation: 0.92,
+      contrast: 1.05,
+      brightness: -0.42,
+      saturation: 1.05,
       hue: 0.0,
-      vignette: 0.72,
+      vignette: 0.6,
       blur: 0.01,
       grain: 0.05,
       seed: 4.0,
@@ -1438,6 +1439,8 @@
     if (heroCanvas) initShaderBackground(heroCanvas, makeUniforms({ seed:4.0, offsetX:-0.15, offsetY:0.1 }));
     var repCanvas = document.getElementById('repShader');
     if (repCanvas) initShaderBackground(repCanvas, makeUniforms({ seed:9.3, offsetX:0.25, offsetY:-0.2, rotate:0.6 }));
+    var evidenciaCanvas = document.getElementById('evidenciaShader');
+    if (evidenciaCanvas) initShaderBackground(evidenciaCanvas, makeUniforms({ seed:6.1, offsetX:-0.2, offsetY:-0.15, rotate:-0.4 }));
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();
