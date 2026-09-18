@@ -1,0 +1,1449 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Regenflex Venezuela</title>
+<meta name="color-scheme" content="dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#121417;
+    --surface:#1a1e22;
+    --surface-2:#21262b;
+    --surface-3:#2a3037;
+    --line:rgba(158,178,186,.14);
+    --line-strong:rgba(158,178,186,.28);
+    --text:#eef3f4;
+    --text-muted:#93a4ab;
+    --text-faint:#5e6d73;
+    --cyan:#0982cb;
+    --cyan-dim:rgba(9,130,203,.12);
+    --cyan-ink:#ffffff;
+    --orange:#ff5252;
+    --orange-dim:rgba(255,82,82,.12);
+    --orange-ink:#210a0a;
+    --font-display:'Montserrat',system-ui,sans-serif;
+    --font-body:'Montserrat',system-ui,sans-serif;
+    --font-mono:'IBM Plex Mono',ui-monospace,monospace;
+    color-scheme:dark;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto;} *{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto !important;} }
+
+  body{
+    margin:0;
+    padding-inline:0;
+    background:var(--ink);
+    color:var(--text);
+    font-family:var(--font-body);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  img{max-width:100%;}
+  a{color:inherit;}
+  h1,h2,h3,h4{font-family:var(--font-display); text-wrap:balance; margin:0; letter-spacing:-.01em;}
+  p{margin:0;}
+  button{font:inherit; color:inherit;}
+  ::selection{background:var(--cyan-dim); color:var(--cyan);}
+
+  .wrap{
+    width:100%;
+    max-width:1180px;
+    margin-inline:auto;
+    padding-inline:24px;
+  }
+  @media (max-width:640px){ .wrap{padding-inline:18px;} }
+
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:12.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--cyan);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow .plate{color:var(--text-faint);}
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--cyan); display:inline-block;}
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(18,20,23,.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1180px; margin-inline:auto; padding-inline:24px;
+    height:68px; display:flex; align-items:center; justify-content:space-between; gap:24px;
+  }
+  .brand{display:flex; align-items:center; gap:10px;}
+  .brand-logo{height:24px; width:auto; display:block; filter:brightness(0) invert(1);}
+  .brand-tag{font-family:var(--font-mono); font-size:11px; color:var(--cyan); border:1px solid var(--line-strong); padding:2px 6px; border-radius:3px; letter-spacing:.06em;}
+  .nav-links{display:flex; gap:28px; list-style:none; margin:0; padding:0; font-size:14.5px; font-weight:500;}
+  .nav-links a{text-decoration:none; color:var(--text-muted); transition:color .15s;}
+  .nav-links a:hover, .nav-links a:focus-visible{color:var(--text);}
+  .nav-cta{display:flex; align-items:center; gap:12px;}
+  .menu-btn{display:none; background:none; border:1px solid var(--line-strong); border-radius:6px; width:40px; height:40px; align-items:center; justify-content:center; cursor:pointer;}
+  .menu-btn svg{width:18px; height:18px;}
+
+  @media (max-width:860px){
+    .nav-links{ position:fixed; inset:68px 0 auto 0; background:var(--surface); flex-direction:column; padding:20px 24px; gap:18px; border-bottom:1px solid var(--line); transform:translateY(-8px); opacity:0; pointer-events:none; transition:opacity .18s, transform .18s;}
+    .nav-links.open{opacity:1; transform:translateY(0); pointer-events:auto;}
+    .menu-btn{display:flex;}
+    .nav-cta .btn-ghost{display:none;}
+  }
+
+  /* ---------- BUTTONS ---------- */
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--font-body); font-weight:700; font-size:14.5px;
+    padding:12px 20px; border-radius:8px; cursor:pointer; text-decoration:none;
+    border:1px solid transparent; white-space:nowrap; transition:transform .15s, box-shadow .15s, background .15s, border-color .15s;
+  }
+  .btn:active{transform:translateY(1px);}
+  .btn-solid{background:var(--cyan); color:var(--cyan-ink); box-shadow:0 0 0 rgba(9,130,203,0);}
+  .btn-solid:hover, .btn-solid:focus-visible{box-shadow:0 0 24px rgba(9,130,203,.35);}
+  .btn-outline{background:transparent; color:var(--text); border-color:var(--line-strong);}
+  .btn-outline:hover, .btn-outline:focus-visible{border-color:var(--cyan); color:var(--cyan);}
+  .btn-ghost{background:transparent; color:var(--text-muted); border-color:var(--line-strong); font-size:13.5px; padding:9px 16px;}
+  .btn-ghost:hover{color:var(--text); border-color:var(--line-strong);}
+  :focus-visible{outline:2px solid var(--cyan); outline-offset:2px;}
+
+  /* ---------- CHOREOGRAPHY (scroll intro) ---------- */
+  .choreo{position:relative; height:300vh;}
+  .choreo-sticky{position:sticky; top:0; height:100vh; width:100%; overflow:hidden; background:var(--ink);}
+  .choreo-sticky::before{
+    content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:radial-gradient(680px 420px at 50% 15%, rgba(9,130,203,.10), transparent 60%);
+  }
+  .choreo-stage{position:absolute; inset:0;}
+  .choreo-tile{
+    position:absolute; left:50%; top:50%; width:36vw; height:24vh; overflow:hidden;
+    border:1px solid var(--line-strong); box-shadow:0 30px 80px rgba(0,0,0,.55); background:var(--surface);
+    transform:translate(-50%,-50%); will-change:transform,width,height;
+  }
+  .choreo-tile img{width:100%; height:100%; object-fit:cover; display:block;}
+  .choreo-tl{z-index:10;}
+  .choreo-br{z-index:20;}
+  .choreo-bl{z-index:30;}
+  .choreo-tr{z-index:40;}
+
+  @media (max-width:760px){
+    .choreo-tile{width:62vw; height:20vh;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .choreo{height:auto;}
+    .choreo-sticky{position:relative; height:auto; padding:48px 24px;}
+    .choreo-stage{position:static; display:grid; grid-template-columns:repeat(2,1fr); gap:14px; max-width:900px; margin-inline:auto;}
+    .choreo-tile{position:static; width:auto; height:180px; transform:none;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative; overflow:hidden;
+    border-bottom:1px solid var(--line);
+    background:var(--ink);
+  }
+  .shader-bg{position:absolute; inset:0; width:100%; height:100%; z-index:0;}
+  .hero > .shader-bg{opacity:.65;}
+  .hero::after{
+    content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+    background:
+      radial-gradient(680px 420px at 82% -8%, rgba(9,130,203,.14), transparent 60%),
+      radial-gradient(520px 360px at 8% 110%, rgba(255,82,82,.07), transparent 60%);
+  }
+  .hero-inner{
+    position:relative; z-index:1;
+    max-width:1180px; margin-inline:auto; padding-inline:24px;
+    padding-block:76px 64px;
+    display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center;
+  }
+  @media (max-width:940px){ .hero-inner{grid-template-columns:1fr; padding-block:44px 40px; gap:40px;} }
+
+  .hero-copy{animation:rise .7s cubic-bezier(.2,.7,.2,1) both;}
+  @keyframes rise{ from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);} }
+
+  .hero h1{
+    font-size:clamp(34px,4.6vw,58px);
+    font-weight:900;
+    line-height:1.04;
+    margin-block:18px 20px;
+  }
+  .hero h1 em{color:var(--cyan); font-style:normal;}
+  .hero p.lead{
+    font-size:17px; color:var(--text-muted); max-width:52ch; margin-bottom:30px;
+  }
+  .hero-ctas{display:flex; flex-wrap:wrap; gap:14px; margin-bottom:34px;}
+  .hero-meta{display:flex; gap:26px; flex-wrap:wrap; font-family:var(--font-mono); font-size:12px; color:var(--text-faint); letter-spacing:.03em;}
+  .hero-meta b{color:var(--text-muted); font-weight:500;}
+
+  /* diagram */
+  .diagram-card{
+    background:var(--surface); border:1px solid var(--line); border-radius:16px;
+    padding:22px 22px 18px; animation:rise .8s .1s cubic-bezier(.2,.7,.2,1) both;
+  }
+  .diagram-head{display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;}
+  .diagram-head .eyebrow{font-size:11px;}
+  .diagram-head .live{display:flex; align-items:center; gap:6px; font-family:var(--font-mono); font-size:11px; color:var(--text-faint);}
+  .dot-live{width:6px; height:6px; border-radius:50%; background:var(--cyan); box-shadow:0 0 8px var(--cyan);}
+
+  .diagram-media{position:relative; width:100%; aspect-ratio:9/16; border-radius:10px; overflow:hidden; background:#000;}
+  .diagram-media video{width:100%; height:100%; object-fit:cover; display:block;}
+
+  .zone{
+    position:absolute; transform:translate(-50%,-50%); display:flex; align-items:center; gap:7px;
+    background:none; border:none; padding:0; cursor:pointer; z-index:2;
+  }
+  .zone .dot{
+    flex:none; width:10px; height:10px; border-radius:50%; background:var(--cyan);
+    box-shadow:0 0 0 0 rgba(9,130,203,.55); animation:pulseDot 2.4s ease-out infinite;
+  }
+  @keyframes pulseDot{
+    0%{ box-shadow:0 0 0 0 rgba(9,130,203,.55); }
+    70%{ box-shadow:0 0 0 11px rgba(9,130,203,0); }
+    100%{ box-shadow:0 0 0 0 rgba(9,130,203,0); }
+  }
+  .zone-label{
+    font-family:var(--font-mono); font-size:9.5px; letter-spacing:.05em; text-transform:uppercase;
+    color:var(--text); background:rgba(18,20,23,.78); border:1px solid var(--line-strong);
+    padding:3px 7px; border-radius:5px; white-space:nowrap; transition:border-color .15s, color .15s;
+  }
+  .zone:hover .zone-label, .zone:focus-visible .zone-label, .zone.active .zone-label{border-color:var(--cyan); color:var(--cyan);}
+  .zone.active .dot{background:#fff;}
+
+  .diagram-caption{
+    margin-top:14px; padding:14px; border-radius:10px; background:var(--surface-2); border:1px solid var(--line);
+    font-size:13.5px; color:var(--text-muted); min-height:64px;
+  }
+  .diagram-caption b{color:var(--text); font-family:var(--font-mono); font-size:12px; letter-spacing:.03em; display:block; margin-bottom:5px; text-transform:uppercase;}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding-block:88px; border-bottom:1px solid var(--line);}
+  @media (max-width:640px){ section{padding-block:56px;} }
+  .section-head{display:flex; flex-direction:column; gap:16px; max-width:640px; margin-bottom:46px;}
+  .section-head h2{font-size:clamp(26px,3.2vw,38px); font-weight:800;}
+  .section-head p{color:var(--text-muted); font-size:15.5px;}
+
+  /* ---------- SCIENCE ---------- */
+  .principles{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:14px; overflow:hidden; margin-top:44px;}
+  @media (max-width:760px){ .principles{grid-template-columns:1fr;} }
+  .principle{background:var(--surface); padding:26px 24px;}
+  .principle .num{font-family:var(--font-mono); color:var(--text-faint); font-size:12px;}
+  .principle h3{font-size:17px; margin-block:10px 8px; font-weight:700;}
+  .principle p{font-size:14px; color:var(--text-muted);}
+
+  /* ---------- PRODUCTS ---------- */
+  .product-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px;}
+  @media (max-width:980px){ .product-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:560px){ .product-grid{grid-template-columns:1fr;} }
+
+  .card{
+    background:var(--surface); border:1px solid var(--line); border-radius:14px;
+    display:flex; flex-direction:column; overflow:hidden;
+  }
+  .card-photo{
+    position:relative; height:210px; padding:18px; box-sizing:border-box;
+    display:flex; align-items:center; justify-content:center;
+    background:radial-gradient(62% 65% at 50% 62%, rgba(9,130,203,.12), transparent 72%), var(--surface);
+    border-bottom:1px solid var(--line);
+  }
+  .card-photo img{
+    max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain; display:block;
+    filter:drop-shadow(0 16px 16px rgba(0,0,0,.55));
+    animation:cardFloat 7s ease-in-out infinite;
+  }
+  @keyframes cardFloat{
+    0%   { transform:translate(0,0); }
+    25%  { transform:translate(3px,-7px); }
+    50%  { transform:translate(-3px,-11px); }
+    75%  { transform:translate(-4px,-4px); }
+    100% { transform:translate(0,0); }
+  }
+  .product-grid .card:nth-child(1) .card-photo img{ animation-duration:7.5s; animation-delay:0s; }
+  .product-grid .card:nth-child(2) .card-photo img{ animation-duration:8.5s; animation-delay:-2.4s; }
+  .product-grid .card:nth-child(3) .card-photo img{ animation-duration:6.8s; animation-delay:-4.1s; }
+  .product-grid .card:nth-child(4) .card-photo img{ animation-duration:9.2s; animation-delay:-1.2s; }
+  .card-top{padding:20px 20px 0; display:flex; flex-direction:column; gap:12px;}
+  .tag{
+    align-self:flex-start; font-family:var(--font-mono); font-size:10.5px; letter-spacing:.06em; text-transform:uppercase;
+    padding:4px 9px; border-radius:20px; border:1px solid;
+  }
+  .tag.acute{color:var(--orange); border-color:rgba(255,82,82,.4); background:var(--orange-dim);}
+  .tag.sustained{color:var(--cyan); border-color:rgba(9,130,203,.4); background:var(--cyan-dim);}
+  .tag.soft{color:var(--text-muted); border-color:var(--line-strong); background:var(--surface-2);}
+
+  .spec-chips{display:flex; flex-wrap:wrap; gap:6px;}
+  .spec-chip{font-family:var(--font-mono); font-size:10.5px; color:var(--text-muted); background:var(--surface-2); border:1px solid var(--line); border-radius:20px; padding:4px 10px; white-space:nowrap;}
+
+  .card h3{font-size:19px; font-weight:800; margin-top:2px;}
+  .card .func{font-size:13.5px; color:var(--text-muted);}
+  .card .indic{
+    font-size:13px; color:var(--text); background:var(--surface-2); border:1px solid var(--line);
+    border-radius:8px; padding:10px 12px; margin-top:2px;
+  }
+  .indic b{display:block; font-family:var(--font-mono); font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:var(--text-faint); margin-bottom:4px; font-weight:500;}
+
+  .card-bottom{margin-top:auto; padding:18px 20px 20px;}
+  .ficha-btn{
+    width:100%; display:flex; align-items:center; justify-content:space-between;
+    background:transparent; border:1px solid var(--line-strong); border-radius:8px; padding:11px 14px;
+    font-size:13px; font-weight:600; cursor:pointer; transition:border-color .15s,color .15s;
+  }
+  .ficha-btn:hover{border-color:var(--cyan); color:var(--cyan);}
+  .ficha-btn svg{width:14px; height:14px; transition:transform .2s;}
+  .ficha-btn[aria-expanded="true"] svg{transform:rotate(180deg);}
+  .ficha-panel{
+    max-height:0; overflow:hidden; transition:max-height .28s ease;
+  }
+  .ficha-panel-inner{padding-top:14px; display:grid; gap:8px;}
+  .ficha-row{display:flex; justify-content:space-between; gap:10px; font-size:12.5px; padding-bottom:8px; border-bottom:1px dashed var(--line);}
+  .ficha-row span:first-child{color:var(--text-faint); font-family:var(--font-mono); text-transform:uppercase; letter-spacing:.04em; font-size:10.5px;}
+  .ficha-row span:last-child{color:var(--text); text-align:right; max-width:60%;}
+
+  /* ---------- MYTHS ---------- */
+  .myth-list{display:flex; flex-direction:column; gap:1px; background:var(--line); border:1px solid var(--line); border-radius:14px; overflow:hidden;}
+  .myth{background:var(--surface);}
+  .myth-q{
+    width:100%; text-align:left; background:none; border:none; cursor:pointer;
+    display:flex; align-items:center; gap:16px; padding:20px 22px; font-family:var(--font-body); font-weight:700; font-size:15px;
+  }
+  .myth-q .x{
+    flex:none; width:26px; height:26px; border-radius:50%; background:var(--orange-dim); color:var(--orange);
+    display:flex; align-items:center; justify-content:center; font-family:var(--font-mono); font-size:13px;
+  }
+  .myth-q .chev{margin-left:auto; width:16px; height:16px; flex:none; color:var(--text-faint); transition:transform .2s;}
+  .myth-q[aria-expanded="true"] .chev{transform:rotate(180deg);}
+  .myth-a{max-height:0; overflow:hidden; transition:max-height .3s ease;}
+  .myth-a-inner{padding:0 22px 22px 64px; display:flex; gap:12px;}
+  .myth-a-inner .check{
+    flex:none; width:26px; height:26px; border-radius:50%; background:var(--cyan-dim); color:var(--cyan);
+    display:flex; align-items:center; justify-content:center; font-size:13px; margin-left:-42px;
+  }
+  .myth-a-inner p{font-size:14px; color:var(--text-muted);}
+  .myth-a-inner p b{color:var(--text); font-weight:700;}
+  @media (max-width:600px){ .myth-a-inner{padding-left:22px;} .myth-a-inner .check{display:none;} }
+
+  /* ---------- B2B ---------- */
+  .b2b-main{display:flex; flex-direction:column; gap:28px;}
+
+  .access-list{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:12px; overflow:hidden;}
+  @media (max-width:760px){ .access-list{grid-template-columns:1fr;} }
+  .access-item{background:var(--surface); padding:20px; display:flex; flex-direction:column; gap:12px;}
+  .access-item .ic{flex:none; width:34px; height:34px; border-radius:8px; background:var(--cyan-dim); color:var(--cyan); display:flex; align-items:center; justify-content:center;}
+  .access-item .ic svg{width:17px; height:17px;}
+  .access-item h4{font-size:14.5px; margin-bottom:4px;}
+  .access-item p{font-size:13px; color:var(--text-muted);}
+
+  .scheme-table{width:100%; border-collapse:collapse; font-size:13px;}
+  .scheme-table caption{text-align:left; font-family:var(--font-mono); font-size:11px; letter-spacing:.05em; text-transform:uppercase; color:var(--text-faint); margin-bottom:10px;}
+  .scheme-table th, .scheme-table td{text-align:left; padding:11px 12px; border-bottom:1px solid var(--line);}
+  .scheme-table th{font-family:var(--font-mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.05em; color:var(--text-faint); font-weight:500;}
+  .scheme-table td{color:var(--text-muted);}
+  .scheme-table td:first-child{color:var(--text); font-weight:600;}
+  .scheme-wrap{overflow-x:auto; margin-top:8px; border:1px solid var(--line); border-radius:12px; padding:18px 18px 6px; background:var(--surface);}
+  .scheme-note{font-size:12px; color:var(--text-faint); margin-top:12px;}
+
+  .b2b-cta{
+    display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;
+    background:var(--surface-2); border:1px solid var(--line); border-radius:14px; padding:22px 26px;
+  }
+  .b2b-cta h4{font-size:15.5px; margin-bottom:5px;}
+  .b2b-cta p{font-size:13px; color:var(--text-muted);}
+  .b2b-cta .btn{flex:none;}
+
+  /* ---------- REPRESENTANTES ---------- */
+  .finder{
+    background:var(--surface); border:1px solid var(--line); border-radius:16px;
+    padding:32px; display:grid; grid-template-columns:320px 1fr; gap:36px;
+  }
+  @media (max-width:800px){ .finder{grid-template-columns:1fr; padding:24px;} }
+
+  .finder-form label{
+    display:block; font-family:var(--font-mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--text-faint); margin-bottom:10px;
+  }
+  .select-shell{position:relative;}
+  .select-shell svg{
+    position:absolute; right:14px; top:50%; transform:translateY(-50%); width:16px; height:16px; color:var(--text-faint); pointer-events:none;
+  }
+  #zonaSelect{
+    width:100%; appearance:none; background:var(--surface-2); color:var(--text); border:1px solid var(--line-strong);
+    border-radius:9px; padding:13px 40px 13px 14px; font-family:var(--font-body); font-size:14.5px; font-weight:600; cursor:pointer;
+  }
+  #zonaSelect:focus-visible{outline:2px solid var(--cyan); outline-offset:2px;}
+  .finder-hint{margin-top:16px; font-size:12.5px; color:var(--text-faint); line-height:1.6;}
+  .finder-hint b{color:var(--text-muted);}
+
+  .rep-results{display:flex; flex-direction:column; gap:12px; min-height:120px;}
+  .rep-empty{
+    display:flex; align-items:center; gap:14px; padding:20px; border:1px dashed var(--line-strong); border-radius:12px;
+    color:var(--text-faint); font-size:13.5px;
+  }
+  .rep-empty svg{flex:none; width:22px; height:22px;}
+
+  .rep-card{
+    display:flex; align-items:center; gap:16px; padding:16px 18px; border:1px solid var(--line); border-radius:12px;
+    background:var(--surface-2); animation:rise .35s cubic-bezier(.2,.7,.2,1) both;
+  }
+  .rep-avatar{
+    flex:none; width:44px; height:44px; border-radius:50%; background:var(--cyan-dim); color:var(--cyan);
+    display:flex; align-items:center; justify-content:center; font-family:var(--font-mono); font-weight:600; font-size:14px;
+  }
+  .rep-info{flex:1; min-width:0;}
+  .rep-info .name{font-weight:700; font-size:14.5px;}
+  .rep-info .zone{font-size:12.5px; color:var(--text-muted); margin-top:2px;}
+  .rep-info .phone{font-family:var(--font-mono); font-size:12px; color:var(--cyan); margin-top:5px; font-variant-numeric:tabular-nums;}
+  .rep-actions{display:flex; gap:8px; flex:none;}
+  .rep-actions a{
+    display:flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:8px;
+    border:1px solid var(--line-strong); color:var(--text-muted); transition:border-color .15s, color .15s;
+  }
+  .rep-actions a:hover{border-color:var(--cyan); color:var(--cyan);}
+  .rep-actions svg{width:17px; height:17px;}
+  @media (max-width:420px){ .rep-card{flex-wrap:wrap;} .rep-info{width:100%;} }
+
+  /* ---------- FOOTER ---------- */
+  footer{padding-block:64px 32px; background:var(--surface);}
+  .disclaimer{
+    display:flex; gap:14px; padding:18px 20px; border:1px solid var(--line); border-radius:12px;
+    background:var(--surface-2); margin-bottom:52px;
+  }
+  .disclaimer svg{flex:none; width:20px; height:20px; color:var(--orange); margin-top:1px;}
+  .disclaimer p{font-size:13px; color:var(--text-muted); line-height:1.65;}
+  .disclaimer p b{color:var(--text);}
+
+  .foot-grid{display:grid; grid-template-columns:1.3fr 1fr 1fr 1fr; gap:36px; margin-bottom:48px;}
+  @media (max-width:820px){ .foot-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:480px){ .foot-grid{grid-template-columns:1fr;} }
+  .foot-brand .brand{margin-bottom:12px;}
+  .foot-brand p{font-size:13.5px; color:var(--text-muted); max-width:34ch; margin-bottom:18px;}
+  .social-row{display:flex; gap:10px;}
+  .social-row a{
+    width:36px; height:36px; border:1px solid var(--line-strong); border-radius:8px; display:flex; align-items:center; justify-content:center; text-decoration:none; transition:border-color .15s, color .15s; color:var(--text-muted);
+  }
+  .social-row a:hover{border-color:var(--cyan); color:var(--cyan);}
+  .social-row svg{width:16px; height:16px;}
+
+  .foot-col h5{font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--text-faint); margin-bottom:16px; font-weight:500;}
+  .foot-col ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:11px;}
+  .foot-col a{text-decoration:none; color:var(--text-muted); font-size:13.5px; transition:color .15s;}
+  .foot-col a:hover{color:var(--cyan);}
+  .foot-col li.static{color:var(--text-muted); font-size:13.5px;}
+
+  .foot-bottom{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;
+    padding-top:26px; border-top:1px solid var(--line);
+    font-family:var(--font-mono); font-size:11.5px; color:var(--text-faint);
+  }
+
+  .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;}
+</style>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#inicio" class="brand" style="text-decoration:none;"><img src="assets/logo-regenflex.png" alt="Regenflex" class="brand-logo"><span class="brand-tag">VE</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#ciencia">Ciencia</a></li>
+      <li><a href="#portafolio">Portafolio</a></li>
+      <li><a href="#evidencia">Evidencia</a></li>
+      <li><a href="#especialistas">Especialistas</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#especialistas" class="btn btn-ghost">Portal profesional</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <!-- ===================== CHOREOGRAPHY (intro de scroll) ===================== -->
+  <section class="choreo" aria-hidden="true">
+    <div class="choreo-sticky">
+      <div class="choreo-stage">
+        <div class="choreo-tile choreo-tl" id="choreoTL">
+          <img src="assets/starter-hero.png" alt="Caja Regenflex Starter">
+        </div>
+        <div class="choreo-tile choreo-br" id="choreoBR">
+          <img src="assets/box-bioplus-light.png" alt="Caja Regenflex BIO-PLUS Light">
+        </div>
+        <div class="choreo-tile choreo-bl" id="choreoBL">
+          <img src="assets/box-tm.png" alt="Caja Regenflex T&amp;M">
+        </div>
+        <div class="choreo-tile choreo-tr" id="choreoTR">
+          <img src="assets/box-bioplus.png" alt="Caja Regenflex BIO-PLUS">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== HERO ===================== -->
+  <header class="hero" id="inicio">
+    <canvas class="shader-bg" id="heroShader" aria-hidden="true"></canvas>
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="plate">01 /</span> Viscosuplementación · Ácido hialurónico</span>
+        <h1>La ciencia de la <em>preservación articular.</em></h1>
+        <p class="lead">Regenflex restaura las propiedades reológicas del líquido sinovial: reduce la fricción intraarticular, amortigua el impacto y protege el cartílago — sosteniendo la biomecánica de la articulación para una movilidad activa y funcional a largo plazo.</p>
+        <div class="hero-ctas">
+          <a href="#especialistas" class="btn btn-solid">Para especialistas (B2B)</a>
+          <a href="#contacto" class="btn btn-outline">Encuentra tu representante</a>
+        </div>
+        <div class="hero-meta">
+          <span><b>4</b> formulaciones diferenciadas</span>
+          <span><b>Distribución oficial</b> JMedical · Venezuela</span>
+          <span><b>Uso</b> exclusivamente médico-prescrito</span>
+        </div>
+      </div>
+
+      <div class="diagram-card">
+        <div class="diagram-head">
+          <span class="eyebrow" style="margin:0;">Render 3D · articulación de rodilla</span>
+          <span class="live"><span class="dot-live"></span>FLUJO SINOVIAL</span>
+        </div>
+        <div class="diagram-media" role="img" aria-label="Render 3D de una rodilla mostrando el gel de ácido hialurónico formándose alrededor del cartílago y el espacio articular">
+          <video autoplay muted loop playsinline preload="auto" poster="assets/knee-poster.jpg">
+            <source src="assets/knee-joint.mp4" type="video/mp4">
+          </video>
+
+          <button class="zone" style="left:52%; top:33%;" aria-label="Cartílago articular" data-zone="cartilago">
+            <span class="dot"></span><span class="zone-label">Cartílago</span>
+          </button>
+          <button class="zone" style="left:68%; top:47%;" aria-label="Líquido sinovial" data-zone="fluido">
+            <span class="dot"></span><span class="zone-label">Líquido sinovial</span>
+          </button>
+          <button class="zone" style="left:34%; top:56%;" aria-label="Cápsula articular" data-zone="capsula">
+            <span class="dot"></span><span class="zone-label">Cápsula</span>
+          </button>
+        </div>
+
+        <div class="diagram-caption" id="diagCaption">
+          <b>Toca un punto del render</b>
+          Explora cómo actúa la viscosuplementación en cada componente del espacio articular.
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== CIENCIA ===================== -->
+  <section id="ciencia">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow"><span class="plate">02 /</span> Biomecánica</span>
+        <h2>Cómo actúa el ácido hialurónico en el espacio articular</h2>
+        <p>La salud articular depende de la reología del líquido sinovial: su capacidad de comportarse como lubricante en movimientos rápidos y como amortiguador bajo carga sostenida. La viscosuplementación reintroduce ácido hialurónico exógeno para restaurar ese equilibrio viscoelástico.</p>
+      </div>
+
+      <div class="principles">
+        <div class="principle">
+          <span class="num">01</span>
+          <h3>Viscosuplementación</h3>
+          <p>Reposición del ácido hialurónico del líquido sinovial para recuperar su comportamiento viscoelástico natural, alterado por el uso, la carga o la edad articular.</p>
+        </div>
+        <div class="principle">
+          <span class="num">02</span>
+          <h3>Reducción de la fricción</h3>
+          <p>Un fluido con viscosidad restaurada disminuye el coeficiente de rozamiento entre las superficies cartilaginosas durante el movimiento.</p>
+        </div>
+        <div class="principle">
+          <span class="num">03</span>
+          <h3>Protección condral</h3>
+          <p>Al amortiguar el impacto y mejorar el ambiente sinovial, se reduce la carga mecánica directa sobre el cartílago articular.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PRODUCTOS ===================== -->
+  <section id="portafolio">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow"><span class="plate">03 /</span> Portafolio</span>
+        <h2>Cuatro formulaciones, una misma ciencia</h2>
+        <p>Tres presentaciones para el espacio intraarticular y una — T&M — para tendones, ligamentos y músculos. Densidad, grado de reticulación y vía de aplicación varían según el tejido y la fase clínica a tratar.</p>
+      </div>
+
+      <div class="product-grid" id="productGrid">
+        <!-- Card 1: Starter -->
+        <article class="card">
+          <div class="card-photo"><img src="assets/cutout-starter.png" alt="Caja Regenflex Starter" loading="lazy"></div>
+          <div class="card-top">
+            <span class="tag acute">Fase aguda</span>
+            <h3>Regenflex Starter</h3>
+            <div class="spec-chips"><span class="spec-chip">1,6 % · 32 mg/2 ml</span><span class="spec-chip">800–1.200 kDa</span></div>
+            <p class="func">Visco-inducción de alta densidad con acción analgésica rápida: el dolor disminuye desde la primera semana.</p>
+            <div class="indic"><b>Indicación</b>Todas las articulaciones. Punto de partida del protocolo Starter → BIO-PLUS.</div>
+          </div>
+          <div class="card-bottom">
+            <button class="ficha-btn" data-target="f1" aria-expanded="false">Ficha técnica
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="ficha-panel" id="f1">
+              <div class="ficha-panel-inner">
+                <div class="ficha-row"><span>Composición</span><span>Sal sódica de ácido hialurónico en solución fisiológica</span></div>
+                <div class="ficha-row"><span>Concentración</span><span>1,6 % · 32 mg/2 ml</span></div>
+                <div class="ficha-row"><span>Peso molecular</span><span>800–1.200 kDa</span></div>
+                <div class="ficha-row"><span>Indicaciones</span><span>Todas las articulaciones</span></div>
+                <div class="ficha-row"><span>Esquema</span><span>Día 0 y refuerzo Día 8; continuar con BIO-PLUS al 6.º mes</span></div>
+                <div class="ficha-row"><span>Vía / calibre</span><span>Intraarticular · aguja fina 22G</span></div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2: BIO-PLUS -->
+        <article class="card">
+          <div class="card-photo"><img src="assets/cutout-bioplus.png" alt="Caja Regenflex BIO-PLUS" loading="lazy"></div>
+          <div class="card-top">
+            <span class="tag sustained">Larga duración</span>
+            <h3>Regenflex BIO-PLUS</h3>
+            <div class="spec-chips"><span class="spec-chip">2,5 % · 75 mg/3 ml</span><span class="spec-chip">1–2 MDa + 500 kDa</span></div>
+            <p class="func">Ácido hialurónico cross-linked e intercalado: aumenta el volumen articular (biorrevolumetría) con protección de largo alcance.</p>
+            <div class="indic"><b>Indicación</b>Protección sostenida en articulaciones de gran carga: rodilla, cadera y tobillo.</div>
+          </div>
+          <div class="card-bottom">
+            <button class="ficha-btn" data-target="f2" aria-expanded="false">Ficha técnica
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="ficha-panel" id="f2">
+              <div class="ficha-panel-inner">
+                <div class="ficha-row"><span>Composición</span><span>Ácido hialurónico cross-linked e intercalado (BDDE «gentle», −30 % residual)</span></div>
+                <div class="ficha-row"><span>Concentración</span><span>2,5 % · 75 mg/3 ml</span></div>
+                <div class="ficha-row"><span>Peso molecular</span><span>1–2 MDa (fracciones reticuladas) + 500 kDa</span></div>
+                <div class="ficha-row"><span>Indicaciones</span><span>Rodilla · Cadera · Tobillo</span></div>
+                <div class="ficha-row"><span>Esquema</span><span>Aplicación única (jeringa prellenada); protección hasta 12 meses</span></div>
+                <div class="ficha-row"><span>Vía / calibre</span><span>Intraarticular · 18–21G</span></div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 3: BIO-PLUS Light -->
+        <article class="card">
+          <div class="card-photo"><img src="assets/cutout-bioplus-light.png" alt="Caja Regenflex BIO-PLUS Light" loading="lazy"></div>
+          <div class="card-top">
+            <span class="tag sustained">Mantenimiento</span>
+            <h3>BIO-PLUS Light</h3>
+            <div class="spec-chips"><span class="spec-chip">2,5 % · 40 mg/1,6 ml</span><span class="spec-chip">800 y 1.200 kDa</span></div>
+            <p class="func">Ácido hialurónico «gentle cross-linked» lineal e intercalado de baja densidad: recupera la reología sinovial con efecto antiflogístico.</p>
+            <div class="indic"><b>Indicación</b>Refuerzo cada 6–9 meses en articulaciones pequeñas: hombro, codo, manos y temporomandibular.</div>
+          </div>
+          <div class="card-bottom">
+            <button class="ficha-btn" data-target="f3" aria-expanded="false">Ficha técnica
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="ficha-panel" id="f3">
+              <div class="ficha-panel-inner">
+                <div class="ficha-row"><span>Composición</span><span>Ácido hialurónico «gentle cross-linked» lineal e intercalado</span></div>
+                <div class="ficha-row"><span>Concentración</span><span>2,5 % · 40 mg/1,6 ml</span></div>
+                <div class="ficha-row"><span>Peso molecular</span><span>800 y 1.200 kDa</span></div>
+                <div class="ficha-row"><span>Indicaciones</span><span>Hombro · Codo · Manos · Temporomandibular</span></div>
+                <div class="ficha-row"><span>Esquema</span><span>Refuerzo cada 6–9 meses</span></div>
+                <div class="ficha-row"><span>Vía / calibre</span><span>Intraarticular · 22–25G</span></div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 4: T&M -->
+        <article class="card">
+          <div class="card-photo"><img src="assets/cutout-tm.png" alt="Caja Regenflex T&amp;M" loading="lazy"></div>
+          <div class="card-top">
+            <span class="tag soft">Tejido blando</span>
+            <h3>Regenflex T&amp;M</h3>
+            <div class="spec-chips"><span class="spec-chip">1,6 % · 32 mg/2 ml</span><span class="spec-chip">5 pesos moleculares</span></div>
+            <p class="func">Ácido hialurónico lineal multifraccionado en 5 pesos moleculares: bioinducción y reparación de tendones y músculos.</p>
+            <div class="indic"><b>Indicación</b>Sustituto del líquido sinovial para tendones, ligamentos y partes blandas con dolor o movilidad reducida de origen degenerativo o postraumático.</div>
+          </div>
+          <div class="card-bottom">
+            <button class="ficha-btn" data-target="f5" aria-expanded="false">Ficha técnica
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="ficha-panel" id="f5">
+              <div class="ficha-panel-inner">
+                <div class="ficha-row"><span>Composición</span><span>Sal sódica de ácido hialurónico en solución fisiológica (5 pesos moleculares)</span></div>
+                <div class="ficha-row"><span>Concentración</span><span>1,6 % · 32 mg/2 ml</span></div>
+                <div class="ficha-row"><span>Peso molecular</span><span>2 kDa · 100 kDa · 200 kDa · 500 kDa · 1 MDa</span></div>
+                <div class="ficha-row"><span>Indicaciones</span><span>Tendones · Ligamentos · Partes blandas</span></div>
+                <div class="ficha-row"><span>Esquema</span><span>Día 0 + refuerzo a los 15–30 días; no requiere AINEs</span></div>
+                <div class="ficha-row"><span>Vía / calibre</span><span>Peritendinosa / perimuscular · 23G</span></div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+      <p class="scheme-note" style="margin-top:18px;">Todas las presentaciones son aplicables frente a patologías degenerativas, traumáticas, agudas y crónicas. Datos de composición y esquema según ficha técnica oficial Regenflex — sujetos a la indicación del especialista tratante.</p>
+    </div>
+  </section>
+
+  <!-- ===================== MITOS VS EVIDENCIA ===================== -->
+  <section id="evidencia">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow"><span class="plate">04 /</span> Mitos y evidencia</span>
+        <h2>Lo que se dice y lo que respalda la ciencia</h2>
+        <p>Separamos las creencias comunes sobre el desgaste articular de lo que efectivamente sostiene la literatura médica y la práctica clínica.</p>
+      </div>
+
+      <div class="myth-list" id="mythList">
+        <div class="myth">
+          <button class="myth-q" aria-expanded="false" data-target="m1"><span class="x">✕</span>«El desgaste articular es irreversible; no hay nada que hacer hasta la cirugía»<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="myth-a" id="m1"><div class="myth-a-inner"><span class="check">✓</span><p><b>Evidencia:</b> la viscosuplementación forma parte del manejo conservador reconocido en fases tempranas e intermedias, orientada a preservar la función articular antes de considerar alternativas quirúrgicas.</p></div></div>
+        </div>
+        <div class="myth">
+          <button class="myth-q" aria-expanded="false" data-target="m2"><span class="x">✕</span>«El ácido hialurónico solo "lubrica", como el aceite de una bisagra»<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="myth-a" id="m2"><div class="myth-a-inner"><span class="check">✓</span><p><b>Evidencia:</b> su función es reológica — modifica la viscoelasticidad del líquido sinovial — y además participa en la señalización celular y en la protección del cartílago frente a la carga mecánica.</p></div></div>
+        </div>
+        <div class="myth">
+          <button class="myth-q" aria-expanded="false" data-target="m3"><span class="x">✕</span>«Es un tratamiento solo para personas mayores»<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="myth-a" id="m3"><div class="myth-a-inner"><span class="check">✓</span><p><b>Evidencia:</b> también se emplea en medicina deportiva y en pacientes activos como estrategia preventiva para sostener la biomecánica articular bajo exigencia física.</p></div></div>
+        </div>
+        <div class="myth">
+          <button class="myth-q" aria-expanded="false" data-target="m4"><span class="x">✕</span>«Todas las presentaciones de ácido hialurónico son iguales»<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="myth-a" id="m4"><div class="myth-a-inner"><span class="check">✓</span><p><b>Evidencia:</b> la densidad, el grado de reticulación y el esquema de aplicación varían según el objetivo clínico — de allí las formulaciones diferenciadas de Regenflex para fase aguda, mantenimiento o alta carga.</p></div></div>
+        </div>
+        <div class="myth">
+          <button class="myth-q" aria-expanded="false" data-target="m5"><span class="x">✕</span>«Los efectos son inmediatos y permanentes tras una sola aplicación»<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="myth-a" id="m5"><div class="myth-a-inner"><span class="check">✓</span><p><b>Evidencia:</b> la respuesta varía según la formulación y el estado articular; cada presentación define un esquema y una duración estimada distintos, sujetos siempre a valoración médica.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== B2B ===================== -->
+  <section id="especialistas">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow"><span class="plate">05 /</span> Portal profesional</span>
+        <h2>Recursos para traumatología, medicina deportiva y fisioterapia</h2>
+        <p>Información técnica de aplicación y respaldo clínico para el especialista que prescribe y administra Regenflex.</p>
+      </div>
+
+      <div class="b2b-grid">
+        <div class="b2b-main">
+          <ul class="access-list">
+            <li class="access-item">
+              <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
+              <div><h4>Estudios clínicos</h4><p>Acceso a la evidencia científica que respalda el mecanismo de acción y el uso de cada formulación.</p></div>
+            </li>
+            <li class="access-item">
+              <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l1.6 4.9L18 8l-4.4 1.1L12 14l-1.6-4.9L6 8l4.4-1.1z"/><path d="M5 17l.8 2.4L8 20l-2.2.6L5 23l-.8-2.4L2 20l2.2-.6z"/></svg></span>
+              <div><h4>Ficha técnica de aplicación</h4><p>Calibre de aguja recomendado, vía de abordaje y esquema orientativo por producto.</p></div>
+            </li>
+            <li class="access-item">
+              <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6"/></svg></span>
+              <div><h4>Distribución oficial</h4><p>Regenflex se distribuye en Venezuela exclusivamente a través de JMedical.</p></div>
+            </li>
+          </ul>
+
+          <div class="scheme-wrap">
+            <table class="scheme-table">
+              <caption>Esquema orientativo de aplicación</caption>
+              <thead>
+                <tr><th>Producto</th><th>Calibre sugerido</th><th>Esquema orientativo</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Starter</td><td>22G</td><td>Día 0 y refuerzo Día 8; continuar con BIO-PLUS al 6.º mes</td></tr>
+                <tr><td>BIO-PLUS</td><td>18–21G</td><td>Aplicación única; protección de largo alcance (hasta 12 meses)</td></tr>
+                <tr><td>BIO-PLUS Light</td><td>22–25G</td><td>Refuerzo cada 6–9 meses</td></tr>
+                <tr><td>T&M</td><td>23G</td><td>Día 0 + refuerzo a los 15–30 días; no requiere AINEs</td></tr>
+              </tbody>
+            </table>
+            <p class="scheme-note">Calibre y esquema según ficha técnica oficial Regenflex. La indicación definitiva es responsabilidad exclusiva del especialista tratante, según la valoración de cada paciente.</p>
+            <p class="scheme-note" style="margin-top:8px;">Referencias: 1. G. D'Annibale et al., <em>J Biol Regul Homeost Agents</em>, 2022 — 2. Estudio Universidad de Urbino, 2023 (datos en archivo interno).</p>
+          </div>
+
+          <div class="b2b-cta">
+            <div>
+              <h4>¿Necesitas estudios clínicos o material de referencia?</h4>
+              <p>Escríbele al representante de Regenflex en tu zona — ellos canalizan la solicitud directamente.</p>
+            </div>
+            <a href="#contacto" class="btn btn-outline">Contactar representante</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== REPRESENTANTES ===================== -->
+  <section id="contacto" style="position:relative; overflow:hidden;">
+    <canvas class="shader-bg" id="repShader" aria-hidden="true" style="opacity:.45;"></canvas>
+    <div class="wrap" style="position:relative; z-index:1;">
+      <div class="section-head">
+        <span class="eyebrow"><span class="plate">06 /</span> Encuentra a tu representante</span>
+        <h2>Contáctanos según tu ubicación</h2>
+        <p>Regenflex es una marca de distribución exclusiva: no vendemos de forma directa. Pacientes, traumatólogos y fisioterapeutas se comunican con nuestros representantes de zona, quienes atienden cada región de Venezuela.</p>
+      </div>
+
+      <div class="finder">
+        <div class="finder-form">
+          <label for="zonaSelect">Selecciona tu estado</label>
+          <div class="select-shell">
+            <select id="zonaSelect">
+              <option value="" selected disabled>— Elige tu ubicación —</option>
+              <option value="caracas">Distrito Capital (Caracas)</option>
+              <option value="tachira">Táchira</option>
+              <option value="aragua">Aragua</option>
+              <option value="carabobo">Carabobo</option>
+              <option value="falcon">Falcón</option>
+              <option value="zulia">Zulia (Maracaibo)</option>
+              <option value="lara">Lara (Barquisimeto)</option>
+              <option value="monagas">Monagas</option>
+              <option value="anzoategui">Anzoátegui</option>
+              <option value="sucre">Sucre</option>
+              <option value="nuevaesparta">Nueva Esparta (Margarita)</option>
+              <option value="otro">Otro estado</option>
+            </select>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+          <p class="finder-hint">Al elegir tu estado te mostramos el o los representantes de ventas que atienden tu zona, con acceso directo por WhatsApp o llamada.</p>
+        </div>
+
+        <div class="rep-results" id="repResults">
+          <div class="rep-empty">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 21c-4-3.5-7-7-7-10.5a7 7 0 0 1 14 0C19 14 16 17.5 12 21z"/></svg>
+            <span>Elige tu estado para ver el contacto de tu representante de zona.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="wrap">
+    <div class="disclaimer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L14.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
+      <p><b>Aviso médico.</b> Este sitio tiene fines informativos y no sustituye la valoración, el diagnóstico ni la indicación de un profesional de la salud. Los productos Regenflex deben ser prescritos y administrados exclusivamente por un especialista calificado en traumatología, medicina deportiva o fisioterapia.</p>
+    </div>
+
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="brand"><img src="assets/logo-regenflex.png" alt="Regenflex" class="brand-logo" style="height:28px;"><span class="brand-tag">VE</span></span>
+        <p>Viscosuplementación con ácido hialurónico para la preservación de la biomecánica articular.</p>
+        <div class="social-row">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 10v7M7 7v.01M12 17v-4.5a2.5 2.5 0 0 1 5 0V17M12 17v-7"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="4"/><path d="m10 9 5 3-5 3z"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h5>Portafolio</h5>
+        <ul>
+          <li><a href="#portafolio">Starter</a></li>
+          <li><a href="#portafolio">BIO-PLUS</a></li>
+          <li><a href="#portafolio">BIO-PLUS Light</a></li>
+          <li><a href="#portafolio">Regenflex T&M</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Compañía</h5>
+        <ul>
+          <li><a href="#ciencia">Biomecánica y ciencia</a></li>
+          <li><a href="#evidencia">Mitos y evidencia</a></li>
+          <li><a href="#especialistas">Portal profesional</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Contacto</h5>
+        <ul>
+          <li><a href="#contacto">Buscar mi representante de zona</a></li>
+          <li class="static">contacto@regenflex.com.ve</li>
+          <li class="static">Distribución: JMedical · RIF J-503345136</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <span>© 2026 REGENFLEX VENEZUELA — DISTRIBUCIÓN OFICIAL JMEDICAL (RIF J-503345136)</span>
+      <span>PLATE 07 / PIE</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var menuBtn = document.getElementById('menuBtn');
+  var navLinks = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', function(){
+    var open = navLinks.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  navLinks.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ navLinks.classList.remove('open'); menuBtn.setAttribute('aria-expanded','false'); });
+  });
+
+  function collapsible(btn, panel, onOpen){
+    var open = false;
+    btn.addEventListener('click', function(){
+      open = !open;
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      panel.style.maxHeight = open ? panel.scrollHeight + 'px' : '0px';
+      if(onOpen) onOpen(open);
+    });
+  }
+
+  document.querySelectorAll('.ficha-btn').forEach(function(btn){
+    var panel = document.getElementById(btn.getAttribute('data-target'));
+    collapsible(btn, panel);
+  });
+
+  document.querySelectorAll('.myth-q').forEach(function(btn){
+    var panel = document.getElementById(btn.getAttribute('data-target'));
+    collapsible(btn, panel);
+  });
+
+  var zoneInfo = {
+    cartilago: {
+      title: 'Cartílago articular',
+      text: 'Superficie de deslizamiento de bajo rozamiento cuya integridad depende de la lubricación sinovial para distribuir la carga entre los extremos óseos.'
+    },
+    fluido: {
+      title: 'Líquido sinovial enriquecido',
+      text: 'El ácido hialurónico reticulado incrementa la viscoelasticidad del fluido, restaurando su capacidad de amortiguación frente a la carga dinámica.'
+    },
+    capsula: {
+      title: 'Cápsula articular',
+      text: 'Contiene y sostiene el ambiente sinovial donde ocurre el intercambio de nutrientes con el cartílago, tejido avascular por naturaleza.'
+    }
+  };
+  var caption = document.getElementById('diagCaption');
+  document.querySelectorAll('.zone').forEach(function(zone){
+    function activate(){
+      document.querySelectorAll('.zone').forEach(function(z){ z.classList.remove('active'); });
+      zone.classList.add('active');
+      var info = zoneInfo[zone.getAttribute('data-zone')];
+      caption.innerHTML = '<b>' + info.title + '</b>' + info.text;
+    }
+    zone.addEventListener('click', activate);
+    zone.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); activate(); } });
+  });
+
+  var reps = {
+    gabriela:   { name:'Gabriela Rodríguez',  zoneLabel:'Caracas y Táchira',                                  phone:'+584126230000' },
+    anakarina:  { name:'Ana Karina Pereira',  zoneLabel:'Caracas',                                            phone:'+584120273286' },
+    victoria:   { name:'Victoria Rodríguez',  zoneLabel:'Caracas',                                            phone:'+584122332966' },
+    stephania:  { name:'Stephania Alvarado',  zoneLabel:'Aragua',                                             phone:'+584124460387' },
+    carolina:   { name:'Carolina Cristancho', zoneLabel:'Carabobo y Falcón',                                  phone:'+584144275278' },
+    yurema:     { name:'Yurema Silva',        zoneLabel:'Zulia (Maracaibo)',                                  phone:'+584127813804' },
+    angela:     { name:'Ángela Suárez',       zoneLabel:'Lara (Barquisimeto)',                                phone:'+584145785634' },
+    francis:    { name:'Francis Velásquez',   zoneLabel:'Oriente: Monagas, Anzoátegui, Sucre y Nueva Esparta', phone:'+584147770101' }
+  };
+
+  var zoneMap = {
+    caracas: ['gabriela','anakarina','victoria'],
+    tachira: ['gabriela'],
+    aragua: ['stephania'],
+    carabobo: ['carolina'],
+    falcon: ['carolina'],
+    zulia: ['yurema'],
+    lara: ['angela'],
+    monagas: ['francis'],
+    anzoategui: ['francis'],
+    sucre: ['francis'],
+    nuevaesparta: ['francis'],
+    otro: []
+  };
+
+  function initials(name){
+    return name.split(' ').filter(function(w){ return w.length; }).slice(0,2).map(function(w){ return w[0]; }).join('').toUpperCase();
+  }
+  function formatPhone(p){
+    // +584126230000 -> +58 412-623-0000
+    return p.replace(/^(\+58)(\d{3})(\d{3})(\d{4})$/, '$1 $2-$3-$4');
+  }
+
+  var repResults = document.getElementById('repResults');
+  var zonaSelect = document.getElementById('zonaSelect');
+
+  function renderReps(zoneKey){
+    var keys = zoneMap[zoneKey] || [];
+    if(!keys.length){
+      repResults.innerHTML =
+        '<div class="rep-empty">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4"/><path d="M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg>' +
+          '<span>Aún no tenemos un representante asignado en esta zona. Escríbenos a <a href="mailto:contacto@regenflex.com.ve" style="color:var(--cyan)">contacto@regenflex.com.ve</a> y te dirigimos con el representante más cercano.</span>' +
+        '</div>';
+      return;
+    }
+    repResults.innerHTML = keys.map(function(key){
+      var r = reps[key];
+      var digits = r.phone.replace(/\D/g,'');
+      return '' +
+        '<div class="rep-card">' +
+          '<div class="rep-avatar">' + initials(r.name) + '</div>' +
+          '<div class="rep-info">' +
+            '<div class="name">' + r.name + '</div>' +
+            '<div class="zone">' + r.zoneLabel + '</div>' +
+            '<div class="phone">' + formatPhone(r.phone) + '</div>' +
+          '</div>' +
+          '<div class="rep-actions">' +
+            '<a href="https://wa.me/' + digits + '" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp a ' + r.name + '">' +
+              '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.39 1.26 4.81L2 22l5.41-1.42a9.87 9.87 0 0 0 4.63 1.18h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.02c-.24.68-1.39 1.3-1.92 1.37-.49.07-1.1.1-1.78-.11-.41-.13-.93-.3-1.6-.58-2.82-1.22-4.66-4.05-4.8-4.24-.14-.19-1.15-1.53-1.15-2.92 0-1.39.73-2.07.99-2.35.26-.28.56-.35.75-.35.19 0 .38 0 .54.01.17.01.41-.07.64.49.24.57.81 1.97.88 2.11.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.16-.29.36-.42.49-.14.14-.28.29-.12.57.16.28.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.22 1.37.28.14.44.12.6-.07.16-.19.68-.79.87-1.06.19-.28.37-.23.62-.14.26.09 1.63.77 1.91.91.28.14.47.21.53.33.07.12.07.68-.17 1.36z"/></svg>' +
+            '</a>' +
+            '<a href="tel:' + r.phone + '" aria-label="Llamar a ' + r.name + '">' +
+              '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7a2 2 0 0 1 1.7 2.05z"/></svg>' +
+            '</a>' +
+          '</div>' +
+        '</div>';
+    }).join('');
+  }
+
+  zonaSelect.addEventListener('change', function(){ renderReps(this.value); });
+
+  /* ---- Choreography scroll intro ---- */
+  var choreoSection = document.querySelector('.choreo');
+  var tlEl = document.getElementById('choreoTL');
+  var trEl = document.getElementById('choreoTR');
+  var blEl = document.getElementById('choreoBL');
+  var brEl = document.getElementById('choreoBR');
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if(choreoSection && tlEl && trEl && blEl && brEl && !reduceMotion){
+    var IN = [0, 0.3, 0.35, 0.65, 1];
+    var HERO_IN = [0.65, 0.7, 0.9, 1];
+    var OPA_IN = [0.75, 0.85];
+
+    function parseVal(str){
+      var m = /^(-?[\d.]+)(\D*)$/.exec(str);
+      return { num: parseFloat(m[1]), unit: m[2] };
+    }
+    function lerp(a, b, t){ return a + (b - a) * t; }
+    function pw(t, inputs, outputs){
+      var n = inputs.length;
+      if(t <= inputs[0]) return outputs[0];
+      if(t >= inputs[n - 1]) return outputs[n - 1];
+      for(var i = 0; i < n - 1; i++){
+        if(t >= inputs[i] && t <= inputs[i + 1]){
+          var localT = (t - inputs[i]) / (inputs[i + 1] - inputs[i] || 1);
+          if(typeof outputs[i] === 'number'){ return lerp(outputs[i], outputs[i + 1], localT); }
+          var a = parseVal(outputs[i]), b = parseVal(outputs[i + 1]);
+          return lerp(a.num, b.num, localT) + a.unit;
+        }
+      }
+      return outputs[n - 1];
+    }
+
+    var xLeft = '-20vw', xRight = '20vw', yTop = '-14vh', yBottom = '14vh';
+
+    function getTargetProgress(){
+      var rect = choreoSection.getBoundingClientRect();
+      var total = choreoSection.offsetHeight - window.innerHeight;
+      if(total <= 0) return 1;
+      var scrolled = -rect.top;
+      return Math.min(1, Math.max(0, scrolled / total));
+    }
+
+    function place(el, x, y){
+      el.style.transform = 'translate(calc(-50% + ' + x + '), calc(-50% + ' + y + '))';
+    }
+
+    var current = 0;
+    function frame(){
+      var target = getTargetProgress();
+      current += (target - current) * 0.14;
+      if(Math.abs(target - current) < 0.0006){ current = target; }
+
+      place(tlEl, pw(current, IN, [xLeft, xLeft, xLeft, '0vw', '0vw']), pw(current, IN, [yTop, yBottom, yBottom, '0vh', '0vh']));
+      place(brEl, pw(current, IN, [xRight, xRight, xRight, '0vw', '0vw']), pw(current, IN, [yBottom, yTop, yTop, '0vh', '0vh']));
+      place(blEl, pw(current, IN, [xLeft, xLeft, xLeft, '0vw', '0vw']), pw(current, IN, [yBottom, yBottom, yBottom, '0vh', '0vh']));
+      place(trEl, pw(current, IN, [xRight, xRight, xRight, '0vw', '0vw']), pw(current, IN, [yTop, yTop, yTop, '0vh', '0vh']));
+
+      trEl.style.width = pw(current, HERO_IN, ['36vw', '36vw', '100vw', '100vw']);
+      trEl.style.height = pw(current, HERO_IN, ['24vh', '24vh', '100vh', '100vh']);
+
+      var underOpacity = pw(current, OPA_IN, [1, 0]);
+      tlEl.style.opacity = underOpacity;
+      blEl.style.opacity = underOpacity;
+      brEl.style.opacity = underOpacity;
+
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+})();
+</script>
+
+<script>
+/* ---- Shader background (plasma), ported to vanilla JS/WebGL — no React needed ---- */
+(function(){
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion) return;
+
+  var VERT = 'attribute vec2 a_position;\nvoid main() {\n  gl_Position = vec4(a_position, 0.0, 1.0);\n}';
+
+  var FRAG = [
+    '#ifdef GL_FRAGMENT_PRECISION_HIGH',
+    'precision highp float;',
+    '#else',
+    'precision mediump float;',
+    '#endif',
+    'uniform vec3 u_colors[8];',
+    'uniform vec4 u_scene;',
+    'uniform vec4 u_shape;',
+    'uniform vec4 u_surface;',
+    'uniform vec4 u_finish;',
+    'uniform vec4 u_transform;',
+    'uniform vec4 u_space;',
+    'uniform vec4 u_cursor;',
+    '#define u_resolution u_scene.xy',
+    '#define u_time u_scene.z',
+    '#define u_colorCount u_scene.w',
+    '#define u_scale u_shape.x',
+    '#define u_intensity u_shape.y',
+    '#define u_paramA u_shape.z',
+    '#define u_warp u_shape.w',
+    '#define u_detail u_surface.x',
+    '#define u_contrast u_surface.y',
+    '#define u_brightness u_surface.z',
+    '#define u_saturation u_surface.w',
+    '#define u_hue u_finish.x',
+    '#define u_vignette u_finish.y',
+    '#define u_blur u_finish.z',
+    '#define u_grain u_finish.w',
+    '#ifdef GL_FRAGMENT_PRECISION_HIGH',
+    '#define u_seed u_transform.x',
+    '#else',
+    '#define u_seed mod(u_transform.x, 31.0)',
+    '#endif',
+    '#define u_rotate u_transform.y',
+    '#define u_drift u_transform.z',
+    '#define u_oklab u_transform.w',
+    '#define u_offset u_space.xy',
+    '#define u_mouse u_space.zw',
+    '#define u_cursorPresence u_cursor.x',
+    '#define u_cursorEffect u_cursor.y',
+    '#define u_cursorStrength u_cursor.z',
+    '#define u_cursorRadius u_cursor.w',
+    'float hash21(vec2 p) {',
+    '#ifndef GL_FRAGMENT_PRECISION_HIGH',
+    '  p = mod(p, 31.0);',
+    '#endif',
+    '  p = fract(p * vec2(234.34, 435.345));',
+    '  p += dot(p, p + 34.23);',
+    '  return fract(p.x * p.y);',
+    '}',
+    'float grainHash(vec2 p) {',
+    '  vec3 p3 = fract(vec3(p.xyx) * 0.1031);',
+    '  p3 += dot(p3, p3.yzx + 33.33);',
+    '  return fract((p3.x + p3.y) * p3.z);',
+    '}',
+    'vec2 hash22(vec2 p) {',
+    '#ifndef GL_FRAGMENT_PRECISION_HIGH',
+    '  p = mod(p, 31.0);',
+    '#endif',
+    '  float n = sin(dot(p, vec2(41.0, 289.0)));',
+    '  return fract(vec2(15731.743, 7892.321) * n);',
+    '}',
+    'float noise(vec2 p) {',
+    '  vec2 i = floor(p);',
+    '  vec2 f = fract(p);',
+    '  vec2 u = f * f * (3.0 - 2.0 * f);',
+    '  return mix(',
+    '    mix(hash21(i), hash21(i + vec2(1.0, 0.0)), u.x),',
+    '    mix(hash21(i + vec2(0.0, 1.0)), hash21(i + vec2(1.0, 1.0)), u.x),',
+    '    u.y);',
+    '}',
+    'float fbm(vec2 p) {',
+    '  float v = 0.0;',
+    '  float a = 0.5;',
+    '  for (int i = 0; i < 5; i++) {',
+    '    v += a * noise(p);',
+    '    p = p * 2.03 + vec2(17.0, 9.2);',
+    '    a *= 0.5;',
+    '  }',
+    '  return v;',
+    '}',
+    'vec3 srgbToLinear(vec3 c) {',
+    '  return mix(c / 12.92, pow((c + 0.055) / 1.055, vec3(2.4)), step(0.04045, c));',
+    '}',
+    'vec3 linearToSrgb(vec3 c) {',
+    '  return mix(c * 12.92, 1.055 * pow(max(c, vec3(0.0)), vec3(1.0 / 2.4)) - 0.055, step(0.0031308, c));',
+    '}',
+    'vec3 linToOklab(vec3 c) {',
+    '  float l = 0.4122214708 * c.r + 0.5363325363 * c.g + 0.0514459929 * c.b;',
+    '  float m = 0.2119034982 * c.r + 0.6806995451 * c.g + 0.1073969566 * c.b;',
+    '  float s = 0.0883024619 * c.r + 0.2817188376 * c.g + 0.6299787005 * c.b;',
+    '  l = pow(max(l, 0.0), 1.0 / 3.0);',
+    '  m = pow(max(m, 0.0), 1.0 / 3.0);',
+    '  s = pow(max(s, 0.0), 1.0 / 3.0);',
+    '  return vec3(',
+    '    0.2104542553 * l + 0.7936177850 * m - 0.0040720468 * s,',
+    '    1.9779984951 * l - 2.4285922050 * m + 0.4505937099 * s,',
+    '    0.0259040371 * l + 0.7827717662 * m - 0.8086757660 * s);',
+    '}',
+    'vec3 oklabToLin(vec3 c) {',
+    '  float l = c.x + 0.3963377774 * c.y + 0.2158037573 * c.z;',
+    '  float m = c.x - 0.1055613458 * c.y - 0.0638541728 * c.z;',
+    '  float s = c.x - 0.0894841775 * c.y - 1.2914855480 * c.z;',
+    '  l = l * l * l; m = m * m * m; s = s * s * s;',
+    '  return vec3(',
+    '    4.0767416621 * l - 3.3077115913 * m + 0.2309699292 * s,',
+    '    -1.2684380046 * l + 2.6097574011 * m - 0.3413193965 * s,',
+    '    -0.0041960863 * l - 0.7034186147 * m + 1.7076147010 * s);',
+    '}',
+    'vec3 mixColour(vec3 a, vec3 b, float t) {',
+    '  if (u_oklab > 0.5) {',
+    '    vec3 la = linToOklab(srgbToLinear(a));',
+    '    vec3 lb = linToOklab(srgbToLinear(b));',
+    '    return clamp(linearToSrgb(oklabToLin(mix(la, lb, t))), 0.0, 1.0);',
+    '  }',
+    '  return mix(a, b, t);',
+    '}',
+    'vec3 palette(float x) {',
+    '  float n = max(u_colorCount - 1.0, 1.0);',
+    '  float f = clamp(x, 0.0, 1.0) * n;',
+    '  vec3 col = u_colors[0];',
+    '  for (int i = 0; i < 7; i++) {',
+    '    if (float(i) < n)',
+    '      col = mixColour(col, u_colors[i + 1], smoothstep(0.0, 1.0, clamp(f - float(i), 0.0, 1.0)));',
+    '  }',
+    '  return col;',
+    '}',
+    'vec3 hueRotate(vec3 col, float a) {',
+    '  const mat3 toYIQ = mat3(0.299, 0.596, 0.211, 0.587, -0.274, -0.523, 0.114, -0.322, 0.312);',
+    '  const mat3 toRGB = mat3(1.0, 1.0, 1.0, 0.956, -0.272, -1.106, 0.621, -0.647, 1.703);',
+    '  vec3 yiq = toYIQ * col;',
+    '  float ca = cos(a), sa = sin(a);',
+    '  yiq = vec3(yiq.x, yiq.y * ca - yiq.z * sa, yiq.y * sa + yiq.z * ca);',
+    '  return toRGB * yiq;',
+    '}',
+    'vec3 shade(vec2 uv, vec2 p, float t) {',
+    '  float k = 2.0 + u_intensity * 6.0;',
+    '  float v = sin(p.x * k + t) + sin(p.y * k * 0.8 - t * 0.7)',
+    '    + sin((p.x + p.y) * k * 0.6 + t * 0.5)',
+    '    + sin(length(p) * k * 1.2 - t);',
+    '  return palette(0.5 + 0.5 * sin(v + u_seed));',
+    '}',
+    'void main() {',
+    '  vec2 uv = gl_FragCoord.xy / u_resolution.xy;',
+    '  vec2 screenUv = uv;',
+    '  vec2 p = (gl_FragCoord.xy - 0.5 * u_resolution.xy) / min(u_resolution.x, u_resolution.y);',
+    '  float cursorMask = 0.0;',
+    '  if (u_cursorPresence > 0.001) {',
+    '    vec2 cursor = (0.5 * u_mouse * u_resolution.xy) / min(u_resolution.x, u_resolution.y);',
+    '    vec2 cursorDelta = p - cursor;',
+    '    if (u_cursorEffect < 0.5) {',
+    '      p += cursor * u_cursorPresence * u_cursorStrength * 0.55;',
+    '    } else {',
+    '      float cursorDistance = length(cursorDelta);',
+    '      vec2 cursorDirection = cursorDelta / max(cursorDistance, 0.0001);',
+    '      cursorMask = u_cursorPresence * (1.0 - smoothstep(0.0, u_cursorRadius, cursorDistance));',
+    '      if (u_cursorEffect < 1.5) {',
+    '        p -= cursorDirection * cursorMask * u_cursorStrength * 0.24;',
+    '      } else if (u_cursorEffect < 2.5) {',
+    '        float cursorAngle = cursorMask * u_cursorStrength * 2.2;',
+    '        float cc = cos(cursorAngle), cs = sin(cursorAngle);',
+    '        p = cursor + mat2(cc, -cs, cs, cc) * cursorDelta;',
+    '      } else if (u_cursorEffect < 3.5) {',
+    '        float ripple = sin(cursorDistance / max(u_cursorRadius, 0.001) * 18.0 - u_time * 5.0);',
+    '        p -= cursorDirection * ripple * cursorMask * u_cursorStrength * 0.07;',
+    '      }',
+    '    }',
+    '  }',
+    '  uv = p * min(u_resolution.x, u_resolution.y) / u_resolution.xy + 0.5;',
+    '  p *= u_scale;',
+    '  if (abs(u_rotate) > 0.0001) {',
+    '    float cr = cos(u_rotate), sr = sin(u_rotate);',
+    '    p = mat2(cr, -sr, sr, cr) * p;',
+    '  }',
+    '  p += u_offset;',
+    '  if (u_drift > 0.0001) p += u_drift * vec2(sin(u_time * 0.31), cos(u_time * 0.23));',
+    '  if (u_warp > 0.0) {',
+    '    p += u_warp * (vec2(fbm(p * u_detail + u_seed), fbm(p * u_detail + vec2(5.2, 1.3))) - 0.5);',
+    '  }',
+    '  vec3 col;',
+    '  if (u_blur > 0.0) {',
+    '    float e = u_blur;',
+    '    float pe = e * u_scale;',
+    '    vec2 uvE = vec2(e) * min(u_resolution.x, u_resolution.y) / u_resolution.xy;',
+    '    col  = shade(uv, p, u_time) * 0.36;',
+    '    col += shade(uv + vec2(uvE.x, 0.0), p + vec2(pe, 0.0), u_time) * 0.16;',
+    '    col += shade(uv - vec2(uvE.x, 0.0), p - vec2(pe, 0.0), u_time) * 0.16;',
+    '    col += shade(uv + vec2(0.0, uvE.y), p + vec2(0.0, pe), u_time) * 0.16;',
+    '    col += shade(uv - vec2(0.0, uvE.y), p - vec2(0.0, pe), u_time) * 0.16;',
+    '  } else {',
+    '    col = shade(uv, p, u_time);',
+    '  }',
+    '  if (abs(u_contrast - 1.0) > 0.0001) col = (col - 0.5) * u_contrast + 0.5;',
+    '  if (abs(u_saturation - 1.0) > 0.0001) {',
+    '    float luma = dot(col, vec3(0.299, 0.587, 0.114));',
+    '    col = mix(vec3(luma), col, u_saturation);',
+    '  }',
+    '  if (abs(u_hue) > 0.0001) col = hueRotate(col, u_hue);',
+    '  if (abs(u_brightness) > 0.0001) col += u_brightness;',
+    '  if (u_vignette > 0.0001) {',
+    '    float vd = length(screenUv - 0.5) * 1.41421356;',
+    '    col *= 1.0 - u_vignette * smoothstep(0.35, 1.0, vd);',
+    '  }',
+    '  if (u_cursorPresence > 0.001 && u_cursorEffect > 3.5) col += (vec3(0.18) + col * 0.12) * cursorMask * u_cursorStrength;',
+    '  if (u_grain > 0.0001) col += (grainHash(gl_FragCoord.xy + vec2(u_seed * 17.0, u_seed * 31.0)) - 0.5) * u_grain;',
+    '  gl_FragColor = vec4(clamp(col, 0.0, 1.0), 1.0);',
+    '}'
+  ].join('\n');
+
+  function hex(h){
+    var n = parseInt(h.replace('#',''),16);
+    return [((n>>16)&255)/255, ((n>>8)&255)/255, (n&255)/255];
+  }
+
+  // Regenflex brand palette: dark slate -> deep cyan -> bright cyan -> warm orange
+  var BRAND_COLORS = [
+    hex('#121417'), hex('#0d3742'), hex('#0982cb'), hex('#ff5252'),
+    hex('#121417'), hex('#121417'), hex('#121417'), hex('#121417')
+  ];
+
+  function makeUniforms(overrides){
+    var base = {
+      colors: BRAND_COLORS,
+      colorCount: 4,
+      scale: 1.35,
+      intensity: 0.42,
+      paramA: 0.5,
+      warp: 0.35,
+      detail: 1.6,
+      contrast: 0.95,
+      brightness: -0.62,
+      saturation: 0.92,
+      hue: 0.0,
+      vignette: 0.72,
+      blur: 0.01,
+      grain: 0.05,
+      seed: 4.0,
+      rotate: 0.0,
+      offsetX: 0.0,
+      offsetY: 0.0,
+      drift: 0.22,
+      cursorEnabled: false,
+      cursorEffect: 2.0,
+      cursorStrength: 0.5,
+      cursorRadius: 0.3,
+      oklab: 1.0,
+      timeScale: 0.28
+    };
+    for (var k in overrides) base[k] = overrides[k];
+    return base;
+  }
+
+  function initShaderBackground(canvas, UNIFORMS){
+    var gl = canvas.getContext('webgl', { antialias: false });
+    if (!gl) return;
+
+    function compile(type, src){
+      var s = gl.createShader(type);
+      gl.shaderSource(s, src);
+      gl.compileShader(s);
+      return s;
+    }
+    var program = gl.createProgram();
+    var vs = compile(gl.VERTEX_SHADER, VERT);
+    var fs = compile(gl.FRAGMENT_SHADER, FRAG);
+    gl.attachShader(program, vs);
+    gl.attachShader(program, fs);
+    gl.linkProgram(program);
+    gl.deleteShader(vs);
+    gl.deleteShader(fs);
+    gl.useProgram(program);
+
+    var buf = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 3,-1, -1,3]), gl.STATIC_DRAW);
+    var loc = gl.getAttribLocation(program, 'a_position');
+    gl.enableVertexAttribArray(loc);
+    gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+
+    var uni = {
+      colors: gl.getUniformLocation(program, 'u_colors'),
+      scene: gl.getUniformLocation(program, 'u_scene'),
+      shape: gl.getUniformLocation(program, 'u_shape'),
+      surface: gl.getUniformLocation(program, 'u_surface'),
+      finish: gl.getUniformLocation(program, 'u_finish'),
+      transform: gl.getUniformLocation(program, 'u_transform'),
+      space: gl.getUniformLocation(program, 'u_space'),
+      cursor: gl.getUniformLocation(program, 'u_cursor')
+    };
+    var flat = [];
+    for (var i=0;i<UNIFORMS.colors.length;i++){ flat.push(UNIFORMS.colors[i][0],UNIFORMS.colors[i][1],UNIFORMS.colors[i][2]); }
+    gl.uniform3fv(uni.colors, new Float32Array(flat));
+    gl.uniform4f(uni.shape, UNIFORMS.scale, UNIFORMS.intensity, UNIFORMS.paramA, UNIFORMS.warp);
+    gl.uniform4f(uni.surface, UNIFORMS.detail, UNIFORMS.contrast, UNIFORMS.brightness, UNIFORMS.saturation);
+    gl.uniform4f(uni.finish, UNIFORMS.hue, UNIFORMS.vignette, UNIFORMS.blur, UNIFORMS.grain);
+    gl.uniform4f(uni.transform, UNIFORMS.seed, UNIFORMS.rotate, UNIFORMS.drift, UNIFORMS.oklab);
+    gl.uniform4f(uni.cursor, 0, UNIFORMS.cursorEffect, UNIFORMS.cursorStrength, UNIFORMS.cursorRadius);
+
+    var raf = 0, lastNow = null, visible = true, inView = true, disposed = false;
+    var start = performance.now();
+    var timeAnimated = Math.abs(UNIFORMS.timeScale) > 0.0001;
+    var bounds = canvas.getBoundingClientRect();
+
+    function resizeCanvas(){
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      var rawW = Math.max(1, Math.round(bounds.width * dpr));
+      var rawH = Math.max(1, Math.round(bounds.height * dpr));
+      var scale = Math.min(1, Math.sqrt(2000000 / Math.max(1, rawW*rawH)));
+      var w = Math.max(1, Math.round(rawW*scale));
+      var h = Math.max(1, Math.round(rawH*scale));
+      if (canvas.width !== w || canvas.height !== h){
+        canvas.width = w; canvas.height = h;
+        gl.viewport(0,0,w,h);
+      }
+    }
+    function requestRender(){
+      if (!disposed && visible && inView && raf === 0) raf = requestAnimationFrame(render);
+    }
+    function updateLayout(){
+      bounds = canvas.getBoundingClientRect();
+      resizeCanvas();
+      requestRender();
+    }
+    window.addEventListener('resize', updateLayout);
+
+    var ro = new ResizeObserver(updateLayout);
+    ro.observe(canvas);
+    var io = new IntersectionObserver(function(entries){
+      var entry = entries[0];
+      inView = entry ? entry.isIntersecting : true;
+      if (inView) requestRender();
+      else if (raf !== 0){ cancelAnimationFrame(raf); raf = 0; lastNow = null; }
+    });
+    io.observe(canvas);
+    document.addEventListener('visibilitychange', function(){
+      visible = document.visibilityState === 'visible';
+      if (visible) requestRender();
+      else if (raf !== 0){ cancelAnimationFrame(raf); raf = 0; lastNow = null; }
+    });
+
+    function render(now){
+      raf = 0;
+      if (disposed || !visible || !inView) return;
+      var dt = lastNow === null ? 0 : Math.min((now-lastNow)/1000, 0.1);
+      lastNow = now;
+      resizeCanvas();
+      gl.uniform4f(uni.scene, canvas.width, canvas.height, ((now-start)/1000)*UNIFORMS.timeScale, UNIFORMS.colorCount);
+      gl.uniform4f(uni.space, UNIFORMS.offsetX, UNIFORMS.offsetY, 0, 0);
+      gl.drawArrays(gl.TRIANGLES, 0, 3);
+      if (timeAnimated) requestRender();
+    }
+    requestRender();
+  }
+
+  function boot(){
+    var heroCanvas = document.getElementById('heroShader');
+    if (heroCanvas) initShaderBackground(heroCanvas, makeUniforms({ seed:4.0, offsetX:-0.15, offsetY:0.1 }));
+    var repCanvas = document.getElementById('repShader');
+    if (repCanvas) initShaderBackground(repCanvas, makeUniforms({ seed:9.3, offsetX:0.25, offsetY:-0.2, rotate:0.6 }));
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
+})();
+</script>
+
+</body></html>
