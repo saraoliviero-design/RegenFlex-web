@@ -396,8 +396,7 @@
   }
   .rep-info{flex:1; min-width:0;}
   .rep-info .name{font-weight:700; font-size:14.5px;}
-  .rep-info .zone{font-size:12.5px; color:var(--text-muted); margin-top:2px;}
-  .rep-info .phone{font-family:var(--font-mono); font-size:12px; color:var(--cyan); margin-top:5px; font-variant-numeric:tabular-nums;}
+  .rep-info .phone{font-family:var(--font-mono); font-size:12px; color:var(--cyan); margin-top:2px; font-variant-numeric:tabular-nums;}
   .rep-actions{display:flex; gap:8px; flex:none;}
   .rep-actions a{
     display:flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:8px;
@@ -982,7 +981,6 @@
           '<div class="rep-avatar">' + initials(r.name) + '</div>' +
           '<div class="rep-info">' +
             '<div class="name">' + r.name + '</div>' +
-            '<div class="zone">' + r.zoneLabel + '</div>' +
             '<div class="phone">' + formatPhone(r.phone) + '</div>' +
           '</div>' +
           '<div class="rep-actions">' +
