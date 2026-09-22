@@ -334,6 +334,9 @@
   .access-list{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:12px; overflow:hidden;}
   @media (max-width:760px){ .access-list{grid-template-columns:1fr;} }
   .access-item{background:var(--surface); padding:20px; display:flex; flex-direction:column; gap:12px;}
+  .access-item-link{padding:0;}
+  .access-item-link > a{display:flex; flex-direction:column; gap:12px; padding:20px; text-decoration:none; color:inherit; transition:background .15s;}
+  .access-item-link > a:hover, .access-item-link > a:focus-visible{background:var(--surface-2);}
   .access-item .ic{flex:none; width:34px; height:34px; border-radius:8px; background:var(--cyan-dim); color:var(--cyan); display:flex; align-items:center; justify-content:center;}
   .access-item .ic svg{width:17px; height:17px;}
   .access-item h4{font-size:14.5px; margin-bottom:4px;}
@@ -729,9 +732,11 @@
       <div class="b2b-grid">
         <div class="b2b-main">
           <ul class="access-list">
-            <li class="access-item">
-              <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
-              <div><h4>Estudios clínicos</h4><p>Acceso a la evidencia científica que respalda el mecanismo de acción y el uso de cada formulación.</p></div>
+            <li class="access-item access-item-link">
+              <a href="assets/estudio-regenflex-china-2021.pdf" target="_blank" rel="noopener">
+                <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
+                <div><h4>Estudios clínicos</h4><p>Acceso a la evidencia científica que respalda el mecanismo de acción y el uso de cada formulación.</p></div>
+              </a>
             </li>
             <li class="access-item">
               <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l1.6 4.9L18 8l-4.4 1.1L12 14l-1.6-4.9L6 8l4.4-1.1z"/><path d="M5 17l.8 2.4L8 20l-2.2.6L5 23l-.8-2.4L2 20l2.2-.6z"/></svg></span>
