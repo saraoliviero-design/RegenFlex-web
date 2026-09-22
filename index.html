@@ -444,6 +444,20 @@
   }
 
   .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;}
+
+  /* ---------- FX: spotlight + grid + noise background ---------- */
+  .fx-bg{position:absolute; inset:0; z-index:0; overflow:hidden; pointer-events:none;}
+  .fx-spotlight{position:absolute; inset:0; background:radial-gradient(560px 420px at 50% 0%, rgba(9,130,203,.24), transparent 70%);}
+  .fx-grid{
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(to right, rgba(158,178,186,.16) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(158,178,186,.16) 1px, transparent 1px);
+    background-size:26px 26px;
+    -webkit-mask-image:radial-gradient(ellipse 90% 60% at 50% 0%, #000 65%, transparent 100%);
+    mask-image:radial-gradient(ellipse 90% 60% at 50% 0%, #000 65%, transparent 100%);
+  }
+  .fx-noise{position:absolute; inset:0; width:100%; height:100%; image-rendering:pixelated;}
 </style>
 
 <nav class="nav">
@@ -564,8 +578,13 @@
   </section>
 
   <!-- ===================== PRODUCTOS ===================== -->
-  <section id="portafolio">
-    <div class="wrap">
+  <section id="portafolio" style="position:relative; overflow:hidden;">
+    <div class="fx-bg">
+      <div class="fx-spotlight"></div>
+      <div class="fx-grid"></div>
+      <canvas class="fx-noise" id="portafolioNoise" aria-hidden="true"></canvas>
+    </div>
+    <div class="wrap" style="position:relative; z-index:1;">
       <div class="section-head">
         <span class="eyebrow"><span class="plate">03 /</span> Portafolio</span>
         <h2>Cuatro formulaciones, una misma ciencia</h2>
@@ -721,8 +740,13 @@
   </section>
 
   <!-- ===================== B2B ===================== -->
-  <section id="especialistas">
-    <div class="wrap">
+  <section id="especialistas" style="position:relative; overflow:hidden;">
+    <div class="fx-bg">
+      <div class="fx-spotlight"></div>
+      <div class="fx-grid"></div>
+      <canvas class="fx-noise" id="especialistasNoise" aria-hidden="true"></canvas>
+    </div>
+    <div class="wrap" style="position:relative; z-index:1;">
       <div class="section-head">
         <span class="eyebrow"><span class="plate">05 /</span> Portal profesional</span>
         <h2>Recursos para traumatología, medicina deportiva y fisioterapia</h2>
@@ -1439,6 +1463,50 @@
     requestRender();
   }
 
+  function initNoiseBackground(canvas, opts){
+    var alpha = (opts && opts.alpha) || 16;
+    var interval = (opts && opts.interval) || 2;
+    var ctx = canvas.getContext('2d', { alpha: true });
+    if (!ctx) return;
+
+    var size = 256;
+    canvas.width = size;
+    canvas.height = size;
+
+    function draw(){
+      var imgData = ctx.createImageData(size, size);
+      var data = imgData.data;
+      for (var i = 0; i < data.length; i += 4){
+        var v = Math.random() * 255;
+        data[i] = v; data[i + 1] = v; data[i + 2] = v; data[i + 3] = alpha;
+      }
+      ctx.putImageData(imgData, 0, 0);
+    }
+
+    var frame = 0, raf = 0, visible = true, inView = true;
+    function loop(){
+      raf = 0;
+      if (!visible || !inView) return;
+      if (frame % interval === 0) draw();
+      frame++;
+      raf = requestAnimationFrame(loop);
+    }
+    function start(){ if (!raf) raf = requestAnimationFrame(loop); }
+
+    var io = new IntersectionObserver(function(entries){
+      var entry = entries[0];
+      inView = entry ? entry.isIntersecting : true;
+      if (inView) start(); else if (raf){ cancelAnimationFrame(raf); raf = 0; }
+    });
+    io.observe(canvas);
+    document.addEventListener('visibilitychange', function(){
+      visible = document.visibilityState === 'visible';
+      if (visible) start(); else if (raf){ cancelAnimationFrame(raf); raf = 0; }
+    });
+
+    start();
+  }
+
   function boot(){
     var heroCanvas = document.getElementById('heroShader');
     if (heroCanvas) initShaderBackground(heroCanvas, makeUniforms({ seed:4.0, offsetX:-0.15, offsetY:0.1 }));
@@ -1446,6 +1514,11 @@
     if (repCanvas) initShaderBackground(repCanvas, makeUniforms({ seed:9.3, offsetX:0.25, offsetY:-0.2, rotate:0.6 }));
     var evidenciaCanvas = document.getElementById('evidenciaShader');
     if (evidenciaCanvas) initShaderBackground(evidenciaCanvas, makeUniforms({ seed:6.1, offsetX:-0.2, offsetY:-0.15, rotate:-0.4 }));
+
+    var portafolioNoise = document.getElementById('portafolioNoise');
+    if (portafolioNoise) initNoiseBackground(portafolioNoise, { alpha:3, interval:40 });
+    var especialistasNoise = document.getElementById('especialistasNoise');
+    if (especialistasNoise) initNoiseBackground(especialistasNoise, { alpha:3, interval:40 });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();
