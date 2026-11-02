@@ -133,14 +133,27 @@
   .choreo-bl{z-index:30;}
   .choreo-tr{z-index:40;}
 
+  .choreo-heading{
+    position:absolute; top:10%; left:50%; z-index:50;
+    transform:translateX(-50%); margin:0;
+    text-align:center; white-space:nowrap;
+    font-family:var(--font-display); font-weight:900;
+    font-size:clamp(26px,5.2vw,54px); letter-spacing:-.01em;
+    color:var(--text);
+    text-shadow:0 10px 40px rgba(0,0,0,.65);
+    pointer-events:none;
+  }
+
   @media (max-width:760px){
     .choreo-tile{width:62vw; height:20vh;}
+    .choreo-heading{white-space:normal; padding-inline:24px; top:7%;}
   }
   @media (prefers-reduced-motion:reduce){
     .choreo{height:auto;}
     .choreo-sticky{position:relative; height:auto; padding:48px 24px;}
     .choreo-stage{position:static; display:grid; grid-template-columns:repeat(2,1fr); gap:14px; max-width:900px; margin-inline:auto;}
     .choreo-tile{position:static; width:auto; height:180px; transform:none;}
+    .choreo-heading{position:static; transform:none; margin-bottom:24px; text-shadow:none;}
   }
 
   /* ---------- HERO ---------- */
@@ -490,6 +503,7 @@
   <!-- ===================== CHOREOGRAPHY (intro de scroll) ===================== -->
   <section class="choreo" aria-hidden="true">
     <div class="choreo-sticky">
+      <p class="choreo-heading" id="choreoHeading">Regenera tu movimiento</p>
       <div class="choreo-stage">
         <div class="choreo-tile choreo-tl" id="choreoTL">
           <img src="assets/starter-hero.png" alt="Caja Regenflex Starter">
@@ -1041,6 +1055,7 @@
   var trEl = document.getElementById('choreoTR');
   var blEl = document.getElementById('choreoBL');
   var brEl = document.getElementById('choreoBR');
+  var headingEl = document.getElementById('choreoHeading');
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   if(choreoSection && tlEl && trEl && blEl && brEl && !reduceMotion){
@@ -1100,6 +1115,8 @@
       tlEl.style.opacity = underOpacity;
       blEl.style.opacity = underOpacity;
       brEl.style.opacity = underOpacity;
+
+      if(headingEl){ headingEl.style.opacity = pw(current, [0, 0.22], [1, 0]); }
 
       requestAnimationFrame(frame);
     }
