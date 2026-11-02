@@ -258,14 +258,17 @@
   @media (max-width:760px){ .ciencia-spiral{opacity:.14; width:85%; right:-24%;} }
 
   /* ---------- PRODUCTS ---------- */
-  .product-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px;}
+  .product-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; align-items:start;}
   @media (max-width:980px){ .product-grid{grid-template-columns:1fr 1fr;} }
   @media (max-width:560px){ .product-grid{grid-template-columns:1fr;} }
 
   .card{
     background:var(--surface); border:1px solid var(--line); border-radius:14px;
     display:flex; flex-direction:column; overflow:hidden;
+    min-height:640px;
   }
+  @media (max-width:980px){ .card{min-height:480px;} }
+  @media (max-width:560px){ .card{min-height:0;} }
   .card-photo{
     position:relative; height:210px; padding:18px; box-sizing:border-box;
     display:flex; align-items:center; justify-content:center;
@@ -600,7 +603,7 @@
   </section>
 
   <!-- ===================== PRODUCTOS ===================== -->
-  <section id="portafolio" style="position:relative; overflow:hidden;">
+  <section id="portafolio" style="position:relative;">
     <div class="fx-bg">
       <div class="fx-spotlight"></div>
       <div class="fx-grid"></div>
@@ -675,8 +678,8 @@
             <span class="tag sustained">Mantenimiento</span>
             <h3>BIO-PLUS Light</h3>
             <div class="spec-chips"><span class="spec-chip">2,5 % · 40 mg/1,6 ml</span><span class="spec-chip">800 y 1.200 kDa</span></div>
-            <p class="func">Ácido hialurónico «gentle cross-linked» lineal e intercalado de baja densidad: recupera la reología sinovial con efecto antiflogístico.</p>
-            <div class="indic"><b>Indicación</b>Refuerzo cada 6–9 meses en articulaciones pequeñas: hombro, codo, manos y temporomandibular.</div>
+            <p class="func">Ácido hialurónico «gentle cross-linked» de baja densidad: recupera la reología sinovial con efecto antiflogístico.</p>
+            <div class="indic"><b>Indicación</b>Refuerzo cada 6–9 meses en articulaciones pequeñas: hombro, codo, manos y ATM.</div>
           </div>
           <div class="card-bottom">
             <button class="ficha-btn" data-target="f3" aria-expanded="false">Ficha técnica
@@ -702,8 +705,8 @@
             <span class="tag soft">Tejido blando</span>
             <h3>Regenflex T&amp;M</h3>
             <div class="spec-chips"><span class="spec-chip">1,6 % · 32 mg/2 ml</span><span class="spec-chip">5 pesos moleculares</span></div>
-            <p class="func">Ácido hialurónico lineal multifraccionado en 5 pesos moleculares: bioinducción y reparación de tendones y músculos.</p>
-            <div class="indic"><b>Indicación</b>Sustituto del líquido sinovial para tendones, ligamentos y partes blandas con dolor o movilidad reducida de origen degenerativo o postraumático.</div>
+            <p class="func">Ácido hialurónico en 5 pesos moleculares: bioinducción y reparación de tendones y músculos.</p>
+            <div class="indic"><b>Indicación</b>Tendones, ligamentos y partes blandas con dolor de origen degenerativo o postraumático.</div>
           </div>
           <div class="card-bottom">
             <button class="ficha-btn" data-target="f5" aria-expanded="false">Ficha técnica
@@ -727,7 +730,7 @@
   </section>
 
   <!-- ===================== MITOS VS EVIDENCIA ===================== -->
-  <section id="evidencia" style="position:relative; overflow:hidden;">
+  <section id="evidencia" style="position:relative;">
     <canvas class="shader-bg" id="evidenciaShader" aria-hidden="true" style="opacity:.6;"></canvas>
     <div class="wrap" style="position:relative; z-index:1;">
       <div class="section-head">
@@ -762,7 +765,7 @@
   </section>
 
   <!-- ===================== B2B ===================== -->
-  <section id="especialistas" style="position:relative; overflow:hidden;">
+  <section id="especialistas" style="position:relative;">
     <div class="fx-bg">
       <div class="fx-spotlight"></div>
       <div class="fx-grid"></div>
