@@ -132,7 +132,7 @@
   .choreo-br{z-index:20;}
   .choreo-bl{z-index:30;}
   .choreo-tr{z-index:40;}
-  .choreo-tr-bg{position:absolute; inset:0; z-index:0; object-fit:cover; filter:blur(28px) brightness(.55) saturate(1.1); transform:scale(1.15);}
+  .choreo-tr-bg{position:absolute; inset:0; z-index:0; object-fit:cover; filter:blur(34px) brightness(1.15) saturate(1.4) contrast(1.05); transform:scale(1.5);}
   .choreo-tr-fg{position:relative; z-index:1; object-fit:contain;}
 
   .choreo-heading{
@@ -147,7 +147,7 @@
   }
 
   @media (max-width:760px){
-    .choreo-tile{width:38vw; height:18vh;}
+    .choreo-tile{width:42vw; height:18vh;}
     .choreo-heading{white-space:normal; padding-inline:24px; top:7%;}
     .choreo-heading span{display:block;}
   }
@@ -1093,10 +1093,10 @@
     var tileW, tileH, xLeft, xRight, yTop = '-14vh', yBottom = '14vh';
     function syncLayout(){
       var isMobile = mobileQuery.matches;
-      tileW = isMobile ? '38vw' : '36vw';
+      tileW = isMobile ? '42vw' : '36vw';
       tileH = isMobile ? '18vh' : '24vh';
-      xLeft = isMobile ? '-26vw' : '-20vw';
-      xRight = isMobile ? '26vw' : '20vw';
+      xLeft = isMobile ? '-24vw' : '-20vw';
+      xRight = isMobile ? '24vw' : '20vw';
     }
     syncLayout();
     window.addEventListener('resize', syncLayout);
