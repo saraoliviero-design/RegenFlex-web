@@ -92,7 +92,7 @@
   .menu-btn svg{width:18px; height:18px;}
 
   @media (max-width:860px){
-    .nav-links{ position:fixed; inset:68px 0 auto 0; background:var(--surface); flex-direction:column; padding:20px 24px; gap:18px; border-bottom:1px solid var(--line); transform:translateY(-8px); opacity:0; pointer-events:none; transition:opacity .18s, transform .18s;}
+    .nav-links{ position:fixed; z-index:100; inset:68px 0 auto 0; background:var(--surface); flex-direction:column; padding:20px 24px; gap:18px; border-bottom:1px solid var(--line); transform:translateY(-8px); opacity:0; pointer-events:none; transition:opacity .18s, transform .18s;}
     .nav-links.open{opacity:1; transform:translateY(0); pointer-events:auto;}
     .menu-btn{display:flex;}
     .nav-cta .btn-ghost{display:none;}
@@ -145,7 +145,7 @@
   }
 
   @media (max-width:760px){
-    .choreo-tile{width:62vw; height:20vh;}
+    .choreo-tile{width:54vw; height:20vh;}
     .choreo-heading{white-space:normal; padding-inline:24px; top:7%;}
   }
   @media (prefers-reduced-motion:reduce){
@@ -621,7 +621,7 @@
         <article class="card">
           <div class="card-photo"><img src="assets/cutout-starter.png" alt="Caja Regenflex Starter" loading="lazy"></div>
           <div class="card-top">
-            <span class="tag acute">Fase aguda</span>
+            <span class="tag acute">Alivio Inmediato</span>
             <h3>Regenflex Starter</h3>
             <div class="spec-chips"><span class="spec-chip">1,6 % · 32 mg/2 ml</span><span class="spec-chip">800–1.200 kDa</span></div>
             <p class="func">Visco-inducción de alta densidad con acción analgésica rápida: el dolor disminuye desde la primera semana.</p>
@@ -702,7 +702,7 @@
         <article class="card">
           <div class="card-photo"><img src="assets/cutout-tm.png" alt="Caja Regenflex T&amp;M" loading="lazy"></div>
           <div class="card-top">
-            <span class="tag soft">Tejido blando</span>
+            <span class="tag soft">Tejido blando y ligamentos</span>
             <h3>Regenflex T&amp;M</h3>
             <div class="spec-chips"><span class="spec-chip">1,6 % · 32 mg/2 ml</span><span class="spec-chip">5 pesos moleculares</span></div>
             <p class="func">Ácido hialurónico en 5 pesos moleculares: bioinducción y reparación de tendones y músculos.</p>
@@ -1003,7 +1003,7 @@
     anzoategui: ['francis'],
     sucre: ['francis'],
     nuevaesparta: ['francis'],
-    otro: []
+    otro: ['anakarina']
   };
 
   function initials(name){
@@ -1085,7 +1085,9 @@
       return outputs[n - 1];
     }
 
-    var xLeft = '-20vw', xRight = '20vw', yTop = '-14vh', yBottom = '14vh';
+    var isMobile = window.matchMedia('(max-width:760px)').matches;
+    var tileW = isMobile ? '54vw' : '36vw', tileH = isMobile ? '20vh' : '24vh';
+    var xLeft = isMobile ? '-30vw' : '-20vw', xRight = isMobile ? '30vw' : '20vw', yTop = '-14vh', yBottom = '14vh';
 
     function getTargetProgress(){
       var rect = choreoSection.getBoundingClientRect();
@@ -1110,8 +1112,8 @@
       place(blEl, pw(current, IN, [xLeft, xLeft, xLeft, '0vw', '0vw']), pw(current, IN, [yBottom, yBottom, yBottom, '0vh', '0vh']));
       place(trEl, pw(current, IN, [xRight, xRight, xRight, '0vw', '0vw']), pw(current, IN, [yTop, yTop, yTop, '0vh', '0vh']));
 
-      trEl.style.width = pw(current, HERO_IN, ['36vw', '36vw', '100vw', '100vw']);
-      trEl.style.height = pw(current, HERO_IN, ['24vh', '24vh', '100vh', '100vh']);
+      trEl.style.width = pw(current, HERO_IN, [tileW, tileW, '100vw', '100vw']);
+      trEl.style.height = pw(current, HERO_IN, [tileH, tileH, '100vh', '100vh']);
 
       var underOpacity = pw(current, OPA_IN, [1, 0]);
       tlEl.style.opacity = underOpacity;
