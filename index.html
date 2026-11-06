@@ -132,6 +132,7 @@
   .choreo-br{z-index:20;}
   .choreo-bl{z-index:30;}
   .choreo-tr{z-index:40;}
+  .choreo-tr img{object-fit:contain;}
 
   .choreo-heading{
     position:absolute; top:10%; left:50%; z-index:50;
@@ -145,8 +146,9 @@
   }
 
   @media (max-width:760px){
-    .choreo-tile{width:54vw; height:20vh;}
+    .choreo-tile{width:38vw; height:18vh;}
     .choreo-heading{white-space:normal; padding-inline:24px; top:7%;}
+    .choreo-heading span{display:block;}
   }
   @media (prefers-reduced-motion:reduce){
     .choreo{height:auto;}
@@ -506,7 +508,7 @@
   <!-- ===================== CHOREOGRAPHY (intro de scroll) ===================== -->
   <section class="choreo" aria-hidden="true">
     <div class="choreo-sticky">
-      <p class="choreo-heading" id="choreoHeading">Regenera tu movimiento</p>
+      <p class="choreo-heading" id="choreoHeading"><span>Regenera</span> <span>tu</span> <span>movimiento</span></p>
       <div class="choreo-stage">
         <div class="choreo-tile choreo-tl" id="choreoTL">
           <img src="assets/starter-hero.png" alt="Caja Regenflex Starter">
@@ -1089,10 +1091,10 @@
     var tileW, tileH, xLeft, xRight, yTop = '-14vh', yBottom = '14vh';
     function syncLayout(){
       var isMobile = mobileQuery.matches;
-      tileW = isMobile ? '54vw' : '36vw';
-      tileH = isMobile ? '20vh' : '24vh';
-      xLeft = isMobile ? '-30vw' : '-20vw';
-      xRight = isMobile ? '30vw' : '20vw';
+      tileW = isMobile ? '38vw' : '36vw';
+      tileH = isMobile ? '18vh' : '24vh';
+      xLeft = isMobile ? '-26vw' : '-20vw';
+      xRight = isMobile ? '26vw' : '20vw';
     }
     syncLayout();
     window.addEventListener('resize', syncLayout);
