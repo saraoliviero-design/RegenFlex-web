@@ -92,8 +92,8 @@
   .menu-btn svg{width:18px; height:18px;}
 
   @media (max-width:860px){
-    .nav-links{ position:fixed; z-index:100; inset:68px 0 auto 0; background:var(--surface); flex-direction:column; padding:20px 24px; gap:18px; border-bottom:1px solid var(--line); transform:translateY(-8px); opacity:0; pointer-events:none; transition:opacity .18s, transform .18s;}
-    .nav-links.open{opacity:1; transform:translateY(0); pointer-events:auto;}
+    .nav-links{ position:fixed; z-index:100; inset:68px 0 auto 0; background:var(--surface); flex-direction:column; padding:20px 24px; gap:18px; border-bottom:1px solid var(--line); transform:translateY(-8px); opacity:0 !important; pointer-events:none; transition:opacity .18s, transform .18s; visibility:hidden;}
+    .nav-links.open{opacity:1 !important; transform:translateY(0); pointer-events:auto; visibility:visible;}
     .menu-btn{display:flex;}
     .nav-cta .btn-ghost{display:none;}
   }
@@ -116,7 +116,7 @@
 
   /* ---------- CHOREOGRAPHY (scroll intro) ---------- */
   .choreo{position:relative; height:300vh;}
-  .choreo-sticky{position:sticky; top:0; height:100vh; width:100%; overflow:hidden; background:var(--ink);}
+  .choreo-sticky{position:sticky; top:0; z-index:1; height:100vh; width:100%; overflow:hidden; background:var(--ink);}
   .choreo-sticky::before{
     content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
     background:radial-gradient(680px 420px at 50% 15%, rgba(9,130,203,.10), transparent 60%);
@@ -1085,9 +1085,17 @@
       return outputs[n - 1];
     }
 
-    var isMobile = window.matchMedia('(max-width:760px)').matches;
-    var tileW = isMobile ? '54vw' : '36vw', tileH = isMobile ? '20vh' : '24vh';
-    var xLeft = isMobile ? '-30vw' : '-20vw', xRight = isMobile ? '30vw' : '20vw', yTop = '-14vh', yBottom = '14vh';
+    var mobileQuery = window.matchMedia('(max-width:760px)');
+    var tileW, tileH, xLeft, xRight, yTop = '-14vh', yBottom = '14vh';
+    function syncLayout(){
+      var isMobile = mobileQuery.matches;
+      tileW = isMobile ? '54vw' : '36vw';
+      tileH = isMobile ? '20vh' : '24vh';
+      xLeft = isMobile ? '-30vw' : '-20vw';
+      xRight = isMobile ? '30vw' : '20vw';
+    }
+    syncLayout();
+    window.addEventListener('resize', syncLayout);
 
     function getTargetProgress(){
       var rect = choreoSection.getBoundingClientRect();
