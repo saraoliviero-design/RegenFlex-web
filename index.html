@@ -132,7 +132,8 @@
   .choreo-br{z-index:20;}
   .choreo-bl{z-index:30;}
   .choreo-tr{z-index:40;}
-  .choreo-tr img{object-fit:contain;}
+  .choreo-tr-bg{position:absolute; inset:0; z-index:0; object-fit:cover; filter:blur(28px) brightness(.55) saturate(1.1); transform:scale(1.15);}
+  .choreo-tr-fg{position:relative; z-index:1; object-fit:contain;}
 
   .choreo-heading{
     position:absolute; top:10%; left:50%; z-index:50;
@@ -520,7 +521,8 @@
           <img src="assets/box-tm.png" alt="Caja Regenflex T&amp;M">
         </div>
         <div class="choreo-tile choreo-tr" id="choreoTR">
-          <img src="assets/box-bioplus.png" alt="Caja Regenflex BIO-PLUS">
+          <img class="choreo-tr-bg" src="assets/box-bioplus.png" alt="" aria-hidden="true">
+          <img class="choreo-tr-fg" src="assets/box-bioplus.png" alt="Caja Regenflex BIO-PLUS">
         </div>
       </div>
     </div>
